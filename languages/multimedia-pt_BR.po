@@ -1,0 +1,225 @@
+# Copyright (C) 2014 FI-Multimedia
+# This file is distributed under the same license as the FI-Multimedia package.
+msgid ""
+msgstr ""
+"Project-Id-Version: FI-Multimedia 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/fi-multimedia\n"
+"POT-Creation-Date: 2014-09-09 14:30:18+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-09-09 13:50-0300\n"
+"Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
+"Language-Team: \n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+
+#: fi-multimedia.php:84
+msgid "Multimedia Settings"
+msgstr "FI Multimídia Ajustes"
+
+#. #-#-#-#-#  fi-multimedia.pot (FI-Multimedia 0.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: fi-multimedia.php:84
+msgid "FI-Multimedia"
+msgstr "FI-Multimídia"
+
+#: fi-multimedia.php:119
+msgid "Multimedia sidebar"
+msgstr "Multimídia área de destaques"
+
+#: lib/Paginator.php:35
+#: lib/Paginator.php:36
+#: lib/Paginator.php:47
+#: lib/Paginator.php:53
+#: lib/Paginator.php:62
+#: lib/Paginator.php:63
+#: lib/Paginator.php:69
+#: lib/Paginator.php:70
+msgid "go to page"
+msgstr "ir para página"
+
+#: settings.php:9
+msgid "FI-Multimedia Plugin Options"
+msgstr "FI-Multimídia Opções do plugin"
+
+#: settings.php:18
+msgid "Service URL"
+msgstr "URL do serviço"
+
+#: settings.php:22
+msgid "Plugin page"
+msgstr "Página do plugin"
+
+#: settings.php:27
+msgid "Filter query"
+msgstr "Filtro de pesquisa"
+
+#: settings.php:31
+msgid "Search form"
+msgstr "Formulário de pesquisa"
+
+#: settings.php:34
+msgid "Show search form"
+msgstr "Mostrar formulário de pesquisa"
+
+#: settings.php:38
+msgid "Disqus shortname"
+msgstr "Disqus identificador"
+
+#: settings.php:42
+msgid "AddThis profile ID"
+msgstr "AddThis identificador"
+
+#: settings.php:46
+msgid "Google Analytics code"
+msgstr "Código do Google Analytics"
+
+#: settings.php:53
+msgid "Save Changes"
+msgstr "Salvar alterações"
+
+#: template/home.php:64
+#: template/resource.php:39
+msgid "Home"
+msgstr "Ínicio"
+
+#: template/home.php:66
+#: template/home.php:68
+#: template/resource.php:40
+#: template/rss.php:52
+msgid "Multimedia"
+msgstr "Multimídia"
+
+#: template/home.php:69
+msgid "Search result"
+msgstr "Resultado"
+
+#: template/home.php:75
+msgid "No results found"
+msgstr "Nenhum resultado encontrado"
+
+#: template/home.php:79
+msgid "Resources found"
+msgstr "Recursos encontrados"
+
+#: template/home.php:81
+msgid "Total of resources"
+msgstr "Total de recursos"
+
+#: template/home.php:99
+msgid "See more details"
+msgstr "Ver detalhes"
+
+#: template/home.php:104
+msgid "Available languages"
+msgstr "Idiomas disponíveis"
+
+#: template/home.php:139
+#: template/home.php:140
+#: template/resource.php:226
+#: template/resource.php:227
+msgid "Search"
+msgstr "Pesquisa"
+
+#: template/home.php:150
+msgid "Subjects"
+msgstr "Assuntos"
+
+#: template/home.php:173
+msgid "Media type"
+msgstr "Tipo de mídia"
+
+#: template/resource.php:41
+msgid "Resource"
+msgstr "Recurso"
+
+#: template/resource.php:64
+msgid "Collection"
+msgstr "Coleção"
+
+#: template/resource.php:71
+msgid "Author(s)"
+msgstr "Autor(es)"
+
+#: template/resource.php:78
+msgid "Contributor(s)"
+msgstr "Contribuidor(es)"
+
+#: template/resource.php:85
+msgid "Objective"
+msgstr "Objetivo"
+
+#: template/resource.php:92
+msgid "Language"
+msgstr "Idioma"
+
+#: template/resource.php:99
+msgid "Duration"
+msgstr "Duração"
+
+#: template/resource.php:106
+msgid "Dimension"
+msgstr "Dimensão"
+
+#: template/resource.php:114
+msgid "Subject(s)"
+msgstr "Assunto(s)"
+
+#: template/resource.php:136
+#: template/resource.php:142
+msgid "Share"
+msgstr "Compartilhar"
+
+#: template/resource.php:150
+msgid "Report error"
+msgstr "Informar um erro"
+
+#: template/resource.php:159
+msgid "Reason"
+msgstr "Razão"
+
+#: template/resource.php:163
+msgid "Invalid Link"
+msgstr "Link inválido"
+
+#: template/resource.php:168
+msgid "Bad content"
+msgstr "Conteúdo inapropriado"
+
+#: template/resource.php:173
+msgid "Other"
+msgstr "Outro"
+
+#: template/resource.php:181
+msgid "Send"
+msgstr "Enviar"
+
+#: template/resource.php:188
+msgid "Thank you for your report."
+msgstr "Obrigado por informar este problema."
+
+#: template/resource.php:191
+msgid "Communication problem. Please try again later."
+msgstr "Problemas de comunicação. Por favor tente novamente."
+
+#: template/resource.php:235
+msgid "Related"
+msgstr "Relacionados"
+
+#. Plugin URI of the plugin/theme
+msgid "http://reddes.bvsalud.org/projects/fi-admin/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "List multimedia metadata from FI-ADMIN."
+msgstr "Listar metadados da fonte de informação multimídia fo FI-ADMIN."
+
+#. Author of the plugin/theme
+msgid "BIREME/OPAS/OMS"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://reddes.bvsalud.org/"
+msgstr ""
+
