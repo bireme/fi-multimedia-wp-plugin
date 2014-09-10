@@ -81,7 +81,7 @@ $pages->paginate($page_url_params);
                            <h1 class="h1-header"><?php _e('Total of resources','multimedia'); echo ': ' . $total; ?></h1>
                         <?php endif; ?>
                         <div class="pull-right">
-                            <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" /></a>
+                            <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" /></a>
                         </div>
 
     				</header>
