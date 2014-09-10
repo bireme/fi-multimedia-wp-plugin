@@ -68,7 +68,6 @@ if(!class_exists('FI_Multimedia_Plugin')) {
 
         function load_translation(){
             // Translations
-            print PLUGIN_DIR;
             load_plugin_textdomain( 'multimedia', false,  PLUGIN_DIR . '/languages' );
         }
 

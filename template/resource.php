@@ -73,7 +73,7 @@ if ($response){
                             </span>
                         <?php endif; ?>
 
-                        <?php if ($resource->authors): ?>
+                        <?php if ($resource->contributors): ?>
                             <span class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Contributor(s)','multimedia'); ?>:</span>
                                 <strong><?php echo implode(", ", $resource->contributors); ?></strong>
@@ -94,17 +94,10 @@ if ($response){
                             </div>
                         <?php endif; ?>
 
-                        <?php if ($resource->duration): ?>
+                        <?php if ($resource->item_extension): ?>
                             <div id="conteudo-loop-idiomas" class="row-fluid">
                                <span class="conteudo-loop-idiomas-tit"><?php _e('Duration','multimedia'); ?>:</span>
-                               <?php echo $resource->duration[0]; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if ($resource->dimension): ?>
-                            <div id="conteudo-loop-idiomas" class="row-fluid">
-                               <span class="conteudo-loop-idiomas-tit"><?php _e('Dimension','multimedia'); ?>:</span>
-                               <?php echo $resource->dimension[0]; ?>
+                               <?php echo $resource->item_extension[0]; ?>
                             </div>
                         <?php endif; ?>
 
