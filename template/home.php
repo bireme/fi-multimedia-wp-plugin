@@ -46,6 +46,7 @@ if ($response){
     $start = $response_json->diaServerResponse[0]->response->start;
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
+    $collection_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_collection_filter;
     $media_type_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_type_filter;
 }
 
@@ -91,9 +92,15 @@ $pages->paginate($page_url_params);
         						<div class="row-fluid">
         							<h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
         						</div>
-        						<div class="conteudo-loop-rates">
-        							<div class="star" data-score="1"></div>
-        						</div>
+
+                                <?php if ($resource->media_collection): ?>
+                                    <p class="row-fluid">
+                                        <a href='<?php echo real_site_url($plugin_slug); ?>/?filter=media_collection:"<?php echo $resource->media_collection; ?>"'>
+                                            <?php echo $resource->media_collection ?>
+                                        </a>
+                                    </p>
+                                <?php endif; ?>    
+
         						<p class="row-fluid">
         							<?php echo ( strlen($resource->description[0]) > 400 ? substr($resource->description[0],0,400) . '...' : $resource->description[0]); ?><br/>
         							<span class="more"><a href="<?php echo real_site_url($plugin_slug); ?>resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','multimedia'); ?></a></span>
@@ -168,6 +175,31 @@ $pages->paginate($page_url_params);
                                 <?php } ?>
         					</ul>
         				</section>
+
+                        <section class="row-fluid marginbottom25 widget_categories">
+                            <header class="row-fluid border-bottom marginbottom15">
+                                <h1 class="h1-header"><?php _e('Collection','multimedia'); ?></h1>
+                            </header>
+                            <ul>
+                                <?php foreach ( $collection_filter as $collection) { ?>
+                                    <?php
+                                        $filter_link = '?';
+                                        if ($query != ''){
+                                            $filter_link .= 'q=' . $query . '&';
+                                        }
+                                        $filter_link .= 'filter=media_collection_filter:"' . $collection[0] . '"';
+                                        if ($user_filter != ''){
+                                            $filter_link .= ' AND ' . $user_filter ;
+                                        }
+                                    ?>
+                                    <li class="cat-item">
+                                        <a href='<?php echo $filter_link; ?>'><?php echo $collection[0]; ?></a>
+                                        <span class="cat-item-count"><?php echo $collection[1] ?></span>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </section>
+
                         <section class="row-fluid marginbottom25 widget_categories">
                             <header class="row-fluid border-bottom marginbottom15">
                                 <h1 class="h1-header"><?php _e('Media type','multimedia'); ?></h1>

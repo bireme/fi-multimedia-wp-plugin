@@ -47,36 +47,42 @@ if ($response){
                 </header>
                 <div class="row-fluid">
                     <article class="conteudo-loop">
-                        <div class="conteudo-loop-rates">
-                            <div class="star" data-score="1"></div>
-                        </div>
-                        
+                        <?php if ($resource->title_translated[0]): ?>
+                            <p class="row-fluid">
+                                <?php echo $resource->title_translated[0] ?>
+                            </p>
+                        <?php endif; ?>
+
                         <p class="row-fluid margintop05">
                             <a href="<?php echo $resource->link[0]; ?>"><?php echo $resource->link[0]; ?></a><br/>
                         </p>
 
-                        <p class="row-fluid">
-                            <?php echo $resource->description[0]; ?>
-                        </p>
-
-                        <?php if ($resource->collection): ?>
+                        <?php if ($resource->media_collection): ?>
                             <span class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Collection','multimedia'); ?>:</span>
-                                <?php echo $resource->collection; ?> 
+                                <a href='<?php echo real_site_url($plugin_slug); ?>/?filter=media_collection:"<?php echo $resource->media_collection; ?>"'>
+                                    <?php echo $resource->media_collection ?>
+                                </a>
                             </span>
                         <?php endif; ?>
+
+                        <span class="row-fluid margintop05">
+                            <p class="row-fluid">
+                                <?php echo $resource->description[0]; ?>
+                            </p>
+                        </span>
 
                         <?php if ($resource->authors): ?>
                             <span class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Author(s)','multimedia'); ?>:</span>
-                                <strong><?php echo implode(", ", $resource->authors); ?></strong>
+                                <?php echo implode(", ", $resource->authors); ?>
                             </span>
                         <?php endif; ?>
 
                         <?php if ($resource->contributors): ?>
                             <span class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Contributor(s)','multimedia'); ?>:</span>
-                                <strong><?php echo implode(", ", $resource->contributors); ?></strong>
+                                <?php echo implode(", ", $resource->contributors); ?>
                             </span>
                         <?php endif; ?>
 
@@ -88,17 +94,24 @@ if ($response){
                         <?php endif; ?>
 
                         <?php if ($resource->language_display): ?>
-                            <div id="conteudo-loop-idiomas" class="row-fluid">
+                            <span class="row-fluid margintop05">
                                <span class="conteudo-loop-idiomas-tit"><?php _e('Language','multimedia'); ?>:</span>
                                <?php print_lang_value($resource->language_display, $site_language); ?>
-                            </div>
+                            </span>
                         <?php endif; ?>
 
                         <?php if ($resource->item_extension): ?>
-                            <div id="conteudo-loop-idiomas" class="row-fluid">
-                               <span class="conteudo-loop-idiomas-tit"><?php _e('Duration','multimedia'); ?>:</span>
+                            <span class="row-fluid margintop05">
+                               <span class="conteudo-loop-data-tit"><?php _e('Duration','multimedia'); ?>:</span>
                                <?php echo $resource->item_extension[0]; ?>
-                            </div>
+                            </span>
+                        <?php endif; ?>
+
+                        <?php if ($resource->publisher[0]): ?>
+                            <span class="row-fluid margintop05">
+                               <span class="conteudo-loop-data-tit"><?php _e('Publisher','multimedia'); ?>:</span>
+                               <?php echo $resource->publisher[0]; ?>
+                            </span>
                         <?php endif; ?>
 
 
