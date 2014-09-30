@@ -11,7 +11,7 @@ Author URI: http://reddes.bvsalud.org/
 define('PLUGIN_VERSION', '0.1' );
 
 define('PLUGIN_SYMBOLIC_LINK', false );
-define('PLUGIN_PLUGIN_DIRNAME', 'fi-multimedia' );
+define('PLUGIN_DIRNAME', 'fi-multimedia' );
 
 if(PLUGIN_SYMBOLIC_LINK == true) {
     define('PLUGIN_PATH',  ABSPATH . 'wp-content/plugins/' . PLUGIN_DIRNAME );
