@@ -28,8 +28,8 @@ require_once(PLUGIN_PATH . '/template-functions.php');
 
 if(!class_exists('FI_Multimedia_Plugin')) {
     class FI_Multimedia_Plugin {
-        
-        private static $plugin_slug = 'multimedia';
+
+        private $plugin_slug = 'multimedia';
 
         /**
          * Construct the plugin object
@@ -59,7 +59,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
 
         /**
          * Deactivate the plugin
-         */     
+         */
         public static function deactivate()
         {
             // Do nothing
@@ -81,17 +81,19 @@ if(!class_exists('FI_Multimedia_Plugin')) {
         }
 
         function admin_menu() {
-            add_options_page(__('Multimedia Settings', 'multimedia'), __('FI-Multimedia', 'multimedia'), 
+            add_options_page(__('Multimedia Settings', 'multimedia'), __('FI-Multimedia', 'multimedia'),
                 'manage_options', 'multimedia.php', 'multimedia_page_admin');
             //call register settings function
             add_action( 'admin_init', array(&$this, 'register_settings'));
         }
 
         function template_redirect() {
-            global $wp;
+            global $wp, $multimedia_plugin_slug;
             $pagename = $wp->query_vars["pagename"];
 
-            if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource' 
+            $multimedia_plugin_slug = $this->plugin_slug;
+
+            if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
                 || $pagename == $this->plugin_slug . '/multimedia-feed'
                 ) {
 
@@ -120,7 +122,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
                 'id'   => 'multimedia-home',
                 'description' => 'Multimedia Area',
                 'before_widget' => '<section id="%1$s" class="row-fluid marginbottom25 widget_categories">',
-                'after_widget'  => '</section>',        
+                'after_widget'  => '</section>',
                 'before_title'  => '<header class="row-fluid border-bottom marginbottom15"><h1 class="h1-header">',
                 'after_title'   => '</h1></header>',
             );
@@ -132,11 +134,11 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             $pagename = $wp->query_vars["pagename"];
 
 
-            if ( strpos($pagename, $this->plugin_slug) === 0 ) { //pagename starts with plugin slug        
+            if ( strpos($pagename, $this->plugin_slug) === 0 ) { //pagename starts with plugin slug
                 return 'Multimedia | ' . $title;
             }
 
-        }    
+        }
 
         function search_form( $form ) {
             global $wp;

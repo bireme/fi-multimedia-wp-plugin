@@ -19,11 +19,11 @@ $count = 10;
 $filter = '';
 
 if ($multi_initial_filter != ''){
-    if ($user_filter != ''){    
+    if ($user_filter != ''){
         $filter = $multi_initial_filter . ' AND ' . $user_filter;
     }else{
         $filter = $multi_initial_filter;
-    }    
+    }
 }else{
     $filter = $user_filter;
 }
@@ -43,7 +43,7 @@ if ($response){
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
 }
 
-$page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
+$page_url_params = home_url($multimedia_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
 
 
 ?>
@@ -52,14 +52,14 @@ $page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter
         <title><?php _e('Multimedia', 'multimedia') ?> <?php echo ($query != '' ? '|' . $query : '') ?></title>
         <link><?php echo htmlspecialchars($page_url_params) ?></link>
         <description><?php echo $query ?></description>
-        <?php 
+        <?php
             foreach ( $resource_list as $resource) {
                 echo "<item>\n";
                 echo "   <title>". htmlspecialchars($resource->title) . "</title>\n";
                 if ($resource->authors){
                     echo "   <author>". implode(", ", $resource->authors) . "</author>\n";
                 }
-                echo "   <link>" . home_url($plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
+                echo "   <link>" . home_url($multimedia_plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
                 echo "   <description>". htmlspecialchars($resource->description[0]) . "</description>\n";
                 echo "   <guid isPermaLink=\"false\">" . $resource->django_id . "</guid>\n";
                 echo "</item>\n";
