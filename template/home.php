@@ -58,7 +58,7 @@ $pages->paginate($page_url_params);
 
 ?>
 
-<?php get_header('fi-multimedia');?>
+<?php get_header('multimedia');?>
 	<div id="content" class="row-fluid">
 		<div class="ajusta2">
             <div class="row-fluid breadcrumb">                
