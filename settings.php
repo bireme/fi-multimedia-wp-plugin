@@ -1,5 +1,5 @@
 <?php
-function multimedia_page_admin() { 
+function multimedia_page_admin() {
 
     $config = get_option('multimedia_config');
 
@@ -7,17 +7,13 @@ function multimedia_page_admin() {
     <div class="wrap">
             <div id="icon-options-general" class="icon32"></div>
             <h2><?php _e('FI-Multimedia Plugin Options', 'multimedia'); ?></h2>
-            
+
             <form method="post" action="options.php">
 
                 <?php settings_fields('multimedia-settings-group'); ?>
 
                 <table class="form-table">
                     <tbody>
-                        <tr valign="top">
-                            <th scope="row"><?php _e('Service URL', 'multimedia'); ?>:</th>
-                            <td><input type="text" name="multimedia_config[service_url]" value="<?php echo ($config['service_url'] == '' ? 'http://fi-admin.bvsalud.org/' : $config['service_url'] ) ?>" class="regular-text code"></td>
-                        </tr>
                         <tr valign="top">
                             <th scope="row"><?php _e('Plugin page', 'multimedia'); ?>:</th>
                             <td><input type="text" name="multimedia_config[plugin_slug]" value="<?php echo ($config['plugin_slug'] != '' ? $config['plugin_slug'] : 'multimedia'); ?>" class="regular-text code"></td>
@@ -45,14 +41,14 @@ function multimedia_page_admin() {
                         <tr valign="top">
                             <th scope="row"><?php _e('Google Analytics code', 'multimedia'); ?>:</th>
                             <td><input type="text" name="multimedia_config[google_analytics_code]" value="<?php echo $config['google_analytics_code'] ?>" class="regular-text code"></td>
-                        </tr>                        
+                        </tr>
                     </tbody>
                 </table>
 
                 <p class="submit">
                 <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
                 </p>
-            
+
             </form>
         </div>
 

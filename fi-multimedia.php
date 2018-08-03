@@ -4,11 +4,11 @@ Plugin Name: FI-Multimedia
 Plugin URI: http://reddes.bvsalud.org/projects/fi-admin/
 Description: List multimedia metadata from FI-ADMIN.
 Author: BIREME/OPAS/OMS
-Version: 0.1
+Version: 0.2
 Author URI: http://reddes.bvsalud.org/
 */
 
-define('PLUGIN_VERSION', '0.1' );
+define('PLUGIN_VERSION', '0.2' );
 
 define('PLUGIN_SYMBOLIC_LINK', false );
 define('PLUGIN_DIRNAME', 'fi-multimedia' );
@@ -30,6 +30,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
     class FI_Multimedia_Plugin {
 
         private $plugin_slug = 'multimedia';
+        private $service_url = 'http://fi-admin.data.bvsalud.org/';
 
         /**
          * Construct the plugin object
@@ -43,8 +44,8 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             add_action( 'wp_head', array(&$this, 'google_analytics_code'));
             add_action( 'template_redirect', array(&$this, 'template_redirect'));
             add_action( 'widgets_init', array(&$this, 'register_sidebars'));
-            add_filter( 'wp_title', array(&$this, 'page_title'), 20, 2);
             add_filter( 'get_search_form', array(&$this, 'search_form'));
+            add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
 
 
         } // END public function __construct
@@ -88,31 +89,40 @@ if(!class_exists('FI_Multimedia_Plugin')) {
         }
 
         function template_redirect() {
-            global $wp, $multimedia_plugin_slug;
+            global $wp, $mm_service_url, $mm_plugin_slug;
             $pagename = $wp->query_vars["pagename"];
 
-            $multimedia_plugin_slug = $this->plugin_slug;
+            // check if request contains plugin slug string
+            $pos_slug = strpos($wp->request, $this->plugin_slug);
+            if ( $pos_slug !== false ){
+                $pagename = substr($wp->request, $pos_slug);
+            }
 
-            if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
-                || $pagename == $this->plugin_slug . '/multimedia-feed'
-                ) {
+            if ( is_404() && $pos_slug !== false ){
 
-                add_action( 'wp_enqueue_scripts', array(&$this, 'page_template_styles_scripts'));
+                $mm_service_url = $this->service_url;
+                $mm_plugin_slug = $this->plugin_slug;
 
-                if ($pagename == $this->plugin_slug){
-                    $template = PLUGIN_PATH . '/template/home.php';
-                }elseif ($pagename == $this->plugin_slug . '/multimedia-feed'){
-                    header("Content-Type: text/xml; charset=UTF-8");
-                    $template = PLUGIN_PATH . '/template/rss.php';
-                }else{
-                    $template = PLUGIN_PATH . '/template/resource.php';
+                if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
+                    || $pagename == $this->plugin_slug . '/multimedia-feed') {
+
+                    add_action( 'wp_enqueue_scripts', array(&$this, 'page_template_styles_scripts'));
+
+                    if ($pagename == $this->plugin_slug){
+                        $template = PLUGIN_PATH . '/template/home.php';
+                    }elseif ($pagename == $this->plugin_slug . '/multimedia-feed'){
+                        header("Content-Type: text/xml; charset=UTF-8");
+                        $template = PLUGIN_PATH . '/template/rss.php';
+                    }else{
+                        $template = PLUGIN_PATH . '/template/resource.php';
+                    }
+                    // force status to 200 - OK
+                    status_header(200);
+
+                    // redirect to page and finish execution
+                    include($template);
+                    die();
                 }
-                // force status to 200 - OK
-                status_header(200);
-
-                // redirect to page and finish execution
-                include($template);
-                die();
             }
         }
 
@@ -129,27 +139,35 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             register_sidebar( $args );
         }
 
-        function page_title($title, $sep){
-            global $wp;
-            $pagename = $wp->query_vars["pagename"];
 
+        function theme_slug_render_title($title) {
+            global $wp, $mm_plugin_title;
+            $pagename = '';
 
-            if ( strpos($pagename, $this->plugin_slug) === 0 ) { //pagename starts with plugin slug
-                return 'Multimedia | ' . $title;
+            // check if request contains plugin slug string
+            $pos_slug = strpos($wp->request, $this->plugin_slug);
+            if ( $pos_slug !== false ){
+                $pagename = substr($wp->request, $pos_slug);
             }
 
+            if ( is_404() && $pos_slug !== false ){
+                $title['title'] = 'Multimedia | ' . get_bloginfo('name');
+            }
+
+            return $title;
         }
+
 
         function search_form( $form ) {
-            global $wp;
-            $pagename = $wp->query_vars["pagename"];
+		    global $wp;
+		    $pagename = $wp->query_vars["pagename"];
 
-            if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug .'/resource') {
-                $form = preg_replace('/action="([^"]*)"(.*)/','action="' . home_url($this->plugin_slug) . '"',$form);
-            }
+		    if ($pagename == $this->plugin_slug || preg_match('/resource\//', $pagename)) {
+		        $form = preg_replace('/action="([^"]*)"(.*)/','action="' . home_url($this->plugin_slug) . '"',$form);
+		    }
 
-            return $form;
-        }
+		    return $form;
+		}
 
         function page_template_styles_scripts(){
             wp_enqueue_script('multimedia',  PLUGIN_URL . 'template/js/functions.js');

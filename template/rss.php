@@ -1,13 +1,13 @@
 <?php
+global $mm_service_url, $mm_plugin_slug;
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 
 /*
 Template Name: LIS RSS
 */
 
-$multi_config = get_option('multimedia_config');
-$multi_service_url = $multi_config['service_url'];
-$multi_initial_filter = $multi_config['initial_filter'];
+$mm_config = get_option('multimedia_config');
+$mm_initial_filter = $mm_config['initial_filter'];
 
 $site_language = strtolower(get_bloginfo('language'));
 
@@ -18,22 +18,22 @@ $total = 0;
 $count = 10;
 $filter = '';
 
-if ($multi_initial_filter != ''){
+if ($mm_initial_filter != ''){
     if ($user_filter != ''){
-        $filter = $multi_initial_filter . ' AND ' . $user_filter;
+        $filter = $mm_initial_filter . ' AND ' . $user_filter;
     }else{
-        $filter = $multi_initial_filter;
+        $filter = $mm_initial_filter;
     }
 }else{
     $filter = $user_filter;
 }
 $start = ($page * $count) - $count;
 
-$multi_service_request = $multi_service_url . 'api/multimedia/search/?q=' . urlencode($query) . '&fq=' .urlencode($filter) . '&start=' . $start;
+$mm_service_request = $mm_service_url . 'api/multimedia/search/?q=' . urlencode($query) . '&fq=' .urlencode($filter) . '&start=' . $start;
 
-//print $multi_service_request;
+//print $mm_service_request;
 
-$response = @file_get_contents($multi_service_request);
+$response = @file_get_contents($mm_service_request);
 if ($response){
     $response_json = json_decode($response);
     //var_dump($response_json);
@@ -43,13 +43,13 @@ if ($response){
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
 }
 
-$page_url_params = home_url($multimedia_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
+$page_url_params = home_url($mm_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
 
 
 ?>
 <rss version="2.0">
     <channel>
-        <title><?php _e('Multimedia', 'multimedia') ?> <?php echo ($query != '' ? '|' . $query : '') ?></title>
+        <title><?php _e('Multimedia', 'multimedia') ?> <?php echo ($query != '' ? ' | ' . $query : '') ?></title>
         <link><?php echo htmlspecialchars($page_url_params) ?></link>
         <description><?php echo $query ?></description>
         <?php
@@ -59,9 +59,9 @@ $page_url_params = home_url($multimedia_plugin_slug) . '?q=' . urlencode($query)
                 if ($resource->authors){
                     echo "   <author>". implode(", ", $resource->authors) . "</author>\n";
                 }
-                echo "   <link>" . home_url($multimedia_plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
+                echo "   <link>" . home_url($mm_plugin_slug) .'/resource/?id=' . $resource->id . "</link>\n";
                 echo "   <description>". htmlspecialchars($resource->description[0]) . "</description>\n";
-                echo "   <guid isPermaLink=\"false\">" . $resource->django_id . "</guid>\n";
+                echo "   <guid isPermaLink=\"false\">" . $resource->id . "</guid>\n";
                 echo "</item>\n";
             }
         ?>

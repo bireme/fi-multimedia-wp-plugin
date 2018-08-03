@@ -2,25 +2,24 @@
 /*
 Template Name: LIS Detail
 */
+global $mm_service_url, $mm_plugin_slug;
 
-$multi_config = get_option('multimedia_config');
+$mm_config = get_option('multimedia_config');
 
 $request_uri = $_SERVER["REQUEST_URI"];
-$request_parts = explode('/', $request_uri);
-$resource_id = end($request_parts);
+$resource_id   = $_GET['id'];
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
-$plugin_slug = $multi_config['plugin_slug'];
-$multi_service_url = $multi_config['service_url'];
-$multi_disqus_id  = $multi_config['disqus_shortname'];
-$multi_addthis_id = $multi_config['addthis_profile_id'];
-$multi_service_request = $multi_service_url . 'api/multimedia/search/?id=multimedia.media.' .$resource_id . '&op=related&lang=' . $lang_dir;
+$mm_disqus_id  = $mm_config['disqus_shortname'];
+$mm_addthis_id = $mm_config['addthis_profile_id'];
 
-//print $multi_service_request;
+$mm_service_request = $mm_service_url . 'api/multimedia/search/?id=' .$resource_id . '&op=related&lang=' . $lang_dir;
 
-$response = @file_get_contents($multi_service_request);
+//print $mm_service_request;
+
+$response = @file_get_contents($mm_service_request);
 
 if ($response){
     $response_json = json_decode($response);
@@ -36,8 +35,8 @@ if ($response){
 <div id="content" class="row-fluid">
         <div class="ajusta2">
             <div class="row-fluid breadcrumb">
-                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','multimedia'); ?></a> > 
-                <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Multimedia', 'multimedia') ?> </a> > 
+                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','multimedia'); ?></a> >
+                <a href="<?php echo real_site_url($mm_plugin_slug); ?>"><?php _e('Multimedia', 'multimedia') ?> </a> >
                 <?php _e('Resource','multimedia'); ?>
             </div>
 
@@ -60,7 +59,7 @@ if ($response){
                         <?php if ($resource->media_collection): ?>
                             <span class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Collection','multimedia'); ?>:</span>
-                                <a href='<?php echo real_site_url($plugin_slug); ?>/?filter=media_collection:"<?php echo $resource->media_collection; ?>"'>
+                                <a href='<?php echo real_site_url($mm_plugin_slug); ?>/?filter=media_collection:"<?php echo $resource->media_collection; ?>"'>
                                     <?php echo $resource->media_collection ?>
                                 </a>
                             </span>
@@ -89,7 +88,7 @@ if ($response){
                         <?php if ($resource->objective): ?>
                             <span class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Objective','multimedia'); ?>:</span>
-                                <?php echo $resource->objective; ?> 
+                                <?php echo $resource->objective; ?>
                             </span>
                         <?php endif; ?>
 
@@ -118,11 +117,11 @@ if ($response){
                         <?php if ($resource->descriptor || $resource->keyword ) : ?>
                             <div id="conteudo-loop-tags" class="row-fluid margintop10">
                                 <?php _e('Subject(s)','multimedia'); ?>:
-                                <i class="ico-tags"> </i>   
-                                    <?php 
+                                <i class="ico-tags"> </i>
+                                    <?php
                                         $descriptors = (array)$resource->descriptor;
                                         $keywords = (array)$resource->keyword;
-                                    ?>                               
+                                    ?>
                                     <strong><?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?></strong>
                               </div>
                         <?php endif; ?>
@@ -139,12 +138,12 @@ if ($response){
                                 <li class="conteudo-loop-icons-li">
                                     <i class="ico-compartilhar"></i>
                                     <!-- AddThis Button BEGIN -->
-                                    <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $multi_addthis_id; ?>"><?php _e('Share','multimedia'); ?></a>
-                                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $multi_addthis_id; ?>"></script>
+                                    <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $mm_addthis_id; ?>"><?php _e('Share','multimedia'); ?></a>
+                                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $mm_addthis_id; ?>"></script>
                                     <!-- AddThis Button END -->
                                     <!--
-                                    <a href="#">                                       
+                                    <a href="#">
                                         <?php _e('Share','multimedia'); ?>
                                     </a>
                                     -->
@@ -156,7 +155,7 @@ if ($response){
                                         <?php _e('Report error','multimedia'); ?>
                                     </span>
 
-                                    <div class="reportar-erro"> 
+                                    <div class="reportar-erro">
                                         <div class="erro-form">
                                             <form action="<?php echo $multi_service_url ?>report-error" id="reportErrorForm">
                                                 <input type="hidden" name="resource_type" value="media"/>
@@ -203,11 +202,11 @@ if ($response){
                             </ul>
                         </footer>
 
-                        <?php if ($multi_disqus_id != '') :?>
+                        <?php if ($mm_disqus_id != '') :?>
                             <div id="disqus_thread" class="row-fluid margintop25"></div>
                             <script type="text/javascript">
                                 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                                var disqus_shortname = '<?php echo $multi_disqus_id; ?>'; // required: replace example with your forum shortname
+                                var disqus_shortname = '<?php echo $mm_disqus_id; ?>'; // required: replace example with your forum shortname
 
                                 /* * * DON'T EDIT BELOW THIS LINE * * */
                                 (function() {
@@ -219,22 +218,22 @@ if ($response){
                             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                         <?php endif; ?>
-    
+
                     </article>
                 </div>
             </section>
 
             <aside id="sidebar">
-		      
-                <?php if ($multi_config['show_form']) : ?>
+
+                <?php if ($mm_config['show_form']) : ?>
                     <section class="header-search">
-                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
+                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($mm_plugin_slug); ?>">
                             <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'multimedia'); ?>...">
                             <input id="searchsubmit" value="<?php _e('Search', 'multimedia'); ?>" type="submit">
                         </form>
                     </section>
                 <?php endif; ?>
-                
+
                 <?php if ( count($related_list) > 0 ) : ?>
                     <section class="row-fluid marginbottom25 widget_categories">
                         <header class="row-fluid border-bottom marginbottom15">
@@ -244,7 +243,7 @@ if ($response){
                             <?php foreach ( $related_list as $related) { ?>
                                 <?php if ($related->django_ct == 'multimedia.media') : ?>
                                     <li class="cat-item">
-                                        <a href="<?php echo real_site_url($plugin_slug); ?>resource/<?php echo $related->django_id; ?>"><?php echo $related->title ?></a>
+                                        <a href="<?php echo real_site_url($mm_plugin_slug); ?>resource/?id=<?php echo $related->id; ?>"><?php echo $related->title ?></a>
                                     </li>
                                 <?php endif; ?>
                             <?php } ?>
