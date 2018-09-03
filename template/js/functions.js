@@ -40,31 +40,31 @@ function reportarErro(){
 
     // Attach a submit handler to the form
     $j( "#reportErrorForm" ).submit(function( event ) {
-     
+
       // Stop form from submitting normally
       event.preventDefault();
-     
+
       // Get some values from elements on the page:
       var $form = $j( this ),
         url = $form.attr( "action" );
-     
+
       // Send the data using post
       var posting = $j.post( url, $form.serialize() );
-     
+
       // Put the results in a div
       posting.done(function( data ) {
         $j(".erro-form").hide();
 
-        if (data == 'True'){       
+        if (data == 'True'){
             $j(".error-report-result").find('#result-problem').hide();
         }else{
             $j(".error-report-result").find('#result-ok').hide();
         }
         $j(".error-report-result").show();
-        
+
       });
     });
-    
+
 }
 
 function sugerirTag(){
@@ -84,31 +84,30 @@ function sugerirTag(){
 
     // Attach a submit handler to the form
     $j( "#tagForm" ).submit(function( event ) {
-     
+
       // Stop form from submitting normally
       event.preventDefault();
-     
+
       // Get some values from elements on the page:
       var $form = $j( this ),
         resource_id = $form.find( "input[name='resource_id']" ).val(),
         tags = $form.find( "input[name='txtTag']" ).val(),
         url = $form.attr( "action" );
-     
+
       // Send the data using post
       var posting = $j.post( url, { resource_id: resource_id, tags: tags } );
-     
+
       // Put the results in a div
       posting.done(function( data ) {
         $j(".sugerir-form").hide();
 
-        if (data == 'True'){       
+        if (data == 'True'){
             $j(".sugerir-tag-result").find('#result-problem').hide();
         }else{
             $j(".sugerir-tag-result").find('#result-ok').hide();
         }
         $j(".sugerir-tag-result").show();
-        
+
       });
     });
 }
-

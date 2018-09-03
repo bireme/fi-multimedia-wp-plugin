@@ -40,12 +40,14 @@ if(!class_exists('FI_Multimedia_Plugin')) {
 
             add_action( 'init', array(&$this, 'load_translation'));
             add_action( 'admin_menu', array(&$this, 'admin_menu'));
+            add_action( 'admin_init', array(&$this, 'multiselect'));
             add_action( 'plugins_loaded', array(&$this, 'plugin_init'));
             add_action( 'wp_head', array(&$this, 'google_analytics_code'));
             add_action( 'template_redirect', array(&$this, 'template_redirect'));
             add_action( 'widgets_init', array(&$this, 'register_sidebars'));
             add_filter( 'get_search_form', array(&$this, 'search_form'));
             add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
+
 
 
         } // END public function __construct
@@ -87,6 +89,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             //call register settings function
             add_action( 'admin_init', array(&$this, 'register_settings'));
         }
+
 
         function template_redirect() {
             global $wp, $mm_service_url, $mm_plugin_slug;
@@ -205,6 +208,11 @@ if(!class_exists('FI_Multimedia_Plugin')) {
 
         <?php
             } //endif
+        }
+
+        function multiselect(){
+          wp_enqueue_style ('multimedia',  PLUGIN_URL . 'template/css/multi-select.css');
+
         }
 
 
