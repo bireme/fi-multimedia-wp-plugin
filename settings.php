@@ -50,7 +50,7 @@ function multimedia_page_admin() {
                                 <td >
                                     <p align="right"><?php _e('Available', 'multimedia');?><br>
                                     <select id="List1" size="5" multiple style="width: 100pt">
-                                        <?php                                 
+                                        <?php
 
                                         if(!in_array('Media type', $config['available_filter'])){
                                             echo '<option value="Media type" >'. translate('Media type','multimedia').'</option>';
@@ -74,10 +74,10 @@ function multimedia_page_admin() {
                                 <td >
                                     <p align="left"><?php _e('Selected', 'multimedia');?> <br>
                                     <select size ="5" multiple style="width: 100pt" id="List2" name="multimedia_config[available_filter][]">
-                                    <?php                               
+                                    <?php
                                     foreach($config['available_filter'] as $filter) {
                                         echo '<option value="'.$filter.'" selected>'.translate($filter,'multimedia').'</option>';
-                                    }  ?>  
+                                    }  ?>
                                     </select>
                                     </p>
                                 </td>
@@ -97,11 +97,11 @@ function multimedia_page_admin() {
         </div>
         <script type="text/javascript">
 
-            function changeList(ListOrigem, ListDestino){ 
+            function changeList(ListOrigem, ListDestino){
                 //ListOrigem = document.getElementById('List1');
                 //ListDestino = document.getElementById('List2');
                 var i;
-                for (i = 0; i < ListOrigem.options.length ; i++){ 
+                for (i = 0; i < ListOrigem.options.length ; i++){
                     if (ListOrigem.options[i].selected == true){
                         var Op = document.createElement("OPTION");
                         Op.text = ListOrigem.options[i].text;
@@ -114,7 +114,7 @@ function multimedia_page_admin() {
                 }
             }
 
-           
+
 
 
 

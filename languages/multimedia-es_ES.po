@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: FI-Multimedia 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/fi-multimedia\n"
 "POT-Creation-Date: 2014-09-09 14:30:18+00:00\n"
-"PO-Revision-Date: 2018-08-30 17:35-0300\n"
+"PO-Revision-Date: 2018-09-03 17:01-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -76,6 +76,14 @@ msgstr "Guardar Cambios"
 #: settings.php:55
 msgid "Sidebar order"
 msgstr "Orden de la barra lateral"
+
+#: settings.php:56
+msgid "Available"
+msgstr "Disponibles"
+
+#: settings.php:57
+msgid "Selected"
+msgstr "Seleccionado"
 
 #: template/home.php:64 template/resource.php:39
 msgid "Home"
