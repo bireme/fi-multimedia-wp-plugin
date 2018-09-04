@@ -44,6 +44,13 @@ function multimedia_page_admin() {
                         </tr>
                         <tr valign="top">
                             <th scope="row"><?php _e('Sidebar order', 'multimedia');?>:</th>
+
+                            <?php
+                              if(!isset($config['available_filter'])){
+                                $config['available_filter'] = ['Collection', 'Subjects', 'Media type'];
+                              }
+                              ?>
+
                             <td>
                               <table border=0>
                                 <tr>
@@ -51,15 +58,14 @@ function multimedia_page_admin() {
                                     <p align="right"><?php _e('Available', 'multimedia');?><br>
                                     <select id="List1" size="5" multiple style="width: 100pt">
                                         <?php
-
-                                        if(!in_array('Media type', $config['available_filter'])){
-                                            echo '<option value="Media type" >'. translate('Media type','multimedia').'</option>';
-                                        }
                                         if(!in_array('Collection', $config['available_filter'])){
                                             echo '<option value="Collection" >'. translate('Collection','multimedia').'</option>';
                                         }
                                         if(!in_array('Subjects', $config['available_filter'])){
                                             echo '<option value="Subjects" >'. translate('Subjects','multimedia').'</option>';
+                                        }
+                                        if(!in_array('Media type', $config['available_filter'])){
+                                            echo '<option value="Media type" >'. translate('Media type','multimedia').'</option>';
                                         }
                                         ?>
                                         </select>
@@ -75,9 +81,10 @@ function multimedia_page_admin() {
                                     <p align="left"><?php _e('Selected', 'multimedia');?> <br>
                                     <select size ="5" multiple style="width: 100pt" id="List2" name="multimedia_config[available_filter][]">
                                     <?php
-                                    foreach($config['available_filter'] as $filter) {
-                                        echo '<option value="'.$filter.'" selected>'.translate($filter,'multimedia').'</option>';
-                                    }  ?>
+                                      foreach($config['available_filter'] as $filter) {
+                                          echo '<option value="'.$filter.'" selected>'.translate($filter,'multimedia').'</option>';
+                                      }
+                                      ?>
                                     </select>
                                     </p>
                                 </td>
