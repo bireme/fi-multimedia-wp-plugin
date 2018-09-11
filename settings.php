@@ -85,7 +85,8 @@ function multimedia_page_admin() {
                                       <ul id="sortable2" class="sortable-list">
                                       <?php
                                       foreach ($order as $index => $item) {
-                                        echo '<li class="ui-state-default" id="'.$item.'">'.translate(trim($item) ,'multimedia').'</li>';
+                                        $item = trim($item); // Important
+                                        echo '<li class="ui-state-default" id="'.$item.'">'.translate($item ,'multimedia').'</li>';
                                       }
                                       ?>
                                       </ul>
