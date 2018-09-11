@@ -47,45 +47,50 @@ function multimedia_page_admin() {
 
                             <?php
                               if(!isset($config['available_filter'])){
-                                $config['available_filter'] = ['Collection', 'Subjects', 'Media type'];
-                              }
-                              ?>
+                                $config['available_filter'] = 'Collection;Subjects;Media type';
+                                $order = explode(';', $config['available_filter'] );
+
+                              }else {
+                                $order = explode(';', $config['available_filter'] );
+                            }
+
+                            ?>
 
                             <td>
+
+
                               <table border=0>
                                 <tr>
                                 <td >
                                     <p align="right"><?php _e('Available', 'multimedia');?><br>
-                                    <select id="List1" size="5" multiple style="width: 100pt">
-                                        <?php
-                                        if(!in_array('Collection', $config['available_filter'])){
-                                            echo '<option value="Collection" >'. translate('Collection','multimedia').'</option>';
-                                        }
-                                        if(!in_array('Subjects', $config['available_filter'])){
-                                            echo '<option value="Subjects" >'. translate('Subjects','multimedia').'</option>';
-                                        }
-                                        if(!in_array('Media type', $config['available_filter'])){
-                                            echo '<option value="Media type" >'. translate('Media type','multimedia').'</option>';
-                                        }
-                                        ?>
-                                        </select>
-                                    </p>
-                                </td>
-                                <td >
-                                    <p align="center">
-                                        <input type="button" name="add" value=">>" OnClick="changeList(document.getElementById('List1'), document.getElementById('List2'))" > <br>
-                                        <input type="button" name="remove" value="<<" OnClick="changeList(document.getElementById('List2'), document.getElementById('List1'))" > <br>
-                                    </p>
-                                </td>
-                                <td >
-                                    <p align="left"><?php _e('Selected', 'multimedia');?> <br>
-                                    <select size ="5" multiple style="width: 100pt" id="List2" name="multimedia_config[available_filter][]">
-                                    <?php
-                                      foreach($config['available_filter'] as $filter) {
-                                          echo '<option value="'.$filter.'" selected>'.translate($filter,'multimedia').'</option>';
+                                      <ul id="sortable1" class="droptrue">
+                                      <?php
+                                      if(!in_array('Collection', $order) && !in_array('Collection ', $order) ){
+                                      	echo '<li class="ui-state-default" id="Collection">'.translate('Collection','multimedia').'</li>';
+                                      }
+                                      if(!in_array('Subjects', $order) && !in_array('Subjects ', $order) ){
+                                      	echo '<li class="ui-state-default" id="Subjects">'.translate('Subjects','multimedia').'</li>';
+                                      }
+                                      if(!in_array('Media type', $order) && !in_array('Media type ', $order) ){
+                                      	echo '<li class="ui-state-default" id="Media type">'.translate('Media type','multimedia').'</li>';
                                       }
                                       ?>
-                                    </select>
+                                      </ul>
+
+                                    </p>
+                                </td>
+
+                                <td >
+                                    <p align="left"><?php _e('Selected', 'multimedia');?> <br>
+                                      <ul id="sortable2" class="sortable-list">
+                                      <?php
+                                      foreach ($order as $index => $item) {
+                                        echo '<li class="ui-state-default" id="'.$item.'">'.translate(trim($item) ,'multimedia').'</li>';
+                                      }
+                                      ?>
+                                      </ul>
+                                      <input type="hidden" id="order_aux" name="multimedia_config[available_filter]" value="<?php echo trim($config['available_filter']); ?> " >
+
                                     </p>
                                 </td>
                                 </tr>
@@ -103,29 +108,23 @@ function multimedia_page_admin() {
             </form>
         </div>
         <script type="text/javascript">
+            $j( function() {
+              $j( "ul.droptrue" ).sortable({
+                connectWith: "ul"
+              });
 
-            function changeList(ListOrigem, ListDestino){
-                //ListOrigem = document.getElementById('List1');
-                //ListDestino = document.getElementById('List2');
-                var i;
-                for (i = 0; i < ListOrigem.options.length ; i++){
-                    if (ListOrigem.options[i].selected == true){
-                        var Op = document.createElement("OPTION");
-                        Op.text = ListOrigem.options[i].text;
-                        Op.value = ListOrigem.options[i].value;
-                        Op.setAttribute("selected", true);
-                        ListDestino.options.add(Op);
-                        ListOrigem.options.remove(i);
-                        i--;
-                    }
+              $j('.sortable-list').sortable({
+
+                connectWith: 'ul',
+                update: function(event, ui) {
+                  var changedList = this.id;
+                  var order = $j(this).sortable('toArray');
+                  var positions = order.join(';');
+                  $j('#order_aux').val(positions);
+
                 }
-            }
-
-
-
-
-
-
+              });
+            } );
         </script>
 
         <?php

@@ -153,8 +153,8 @@ $pages->paginate($page_url_params);
                     <?php if (strval($total) > 0) :?>
 
                       <?php
-                        
-                            foreach ($mm_config['available_filter'] as $index => $content) { ?>
+                            $order = explode(';', $mm_config['available_filter']);
+                            foreach ( $order as $index => $content) { ?>
 
                             <?php  if($content == 'Collection'){ ?>
                                 <section class="row-fluid marginbottom25 widget_categories">

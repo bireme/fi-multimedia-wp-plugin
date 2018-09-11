@@ -175,11 +175,14 @@ if(!class_exists('FI_Multimedia_Plugin')) {
         function page_template_styles_scripts(){
             wp_enqueue_script('multimedia',  PLUGIN_URL . 'template/js/functions.js');
             wp_enqueue_style ('multimedia',  PLUGIN_URL . 'template/css/style.css');
+
         }
 
 
         function register_settings(){
             register_setting('multimedia-settings-group', 'multimedia_config');
+            wp_enqueue_style ('multimedia',  PLUGIN_URL . 'template/css/admin.css');
+            wp_enqueue_script('multimedia',  PLUGIN_URL . 'template/js/jquery-ui.js');
         }
 
         function google_analytics_code(){
@@ -211,7 +214,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
         }
 
         function multiselect(){
-          wp_enqueue_style ('multimedia',  PLUGIN_URL . 'template/css/multi-select.css');
+          wp_enqueue_style ('multimedia',  PLUGIN_URL . 'template/css/admin.css');
 
         }
 
