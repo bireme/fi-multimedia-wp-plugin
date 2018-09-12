@@ -5,20 +5,19 @@ msgstr ""
 "Project-Id-Version: FI-Multimedia 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/fi-multimedia\n"
 "POT-Creation-Date: 2014-09-09 14:30:18+00:00\n"
+"PO-Revision-Date: 2018-09-03 16:59-0300\n"
+"Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-09-09 13:50-0300\n"
-"Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
-"Language-Team: \n"
-"X-Poedit-Language: Portuguese\n"
-"X-Poedit-Country: BRAZIL\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: fi-multimedia.php:84
 msgid "Multimedia Settings"
 msgstr "FI Multimídia Ajustes"
 
-#. #-#-#-#-#  fi-multimedia.pot (FI-Multimedia 0.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: fi-multimedia.php:84
 msgid "FI-Multimedia"
@@ -28,14 +27,9 @@ msgstr "FI-Multimídia"
 msgid "Multimedia sidebar"
 msgstr "Multimídia área de destaques"
 
-#: lib/Paginator.php:35
-#: lib/Paginator.php:36
-#: lib/Paginator.php:47
-#: lib/Paginator.php:53
-#: lib/Paginator.php:62
-#: lib/Paginator.php:63
-#: lib/Paginator.php:69
-#: lib/Paginator.php:70
+#: lib/Paginator.php:35 lib/Paginator.php:36 lib/Paginator.php:47
+#: lib/Paginator.php:53 lib/Paginator.php:62 lib/Paginator.php:63
+#: lib/Paginator.php:69 lib/Paginator.php:70
 msgid "go to page"
 msgstr "ir para página"
 
@@ -79,14 +73,23 @@ msgstr "Código do Google Analytics"
 msgid "Save Changes"
 msgstr "Salvar alterações"
 
-#: template/home.php:64
-#: template/resource.php:39
+#: settings.php:55
+msgid "Sidebar order"
+msgstr "Ordem da lateral"
+
+#: settings.php:56
+msgid "Available"
+msgstr "Disponíveis"
+
+#: settings.php:57
+msgid "Selected"
+msgstr "Selecionados"
+
+#: template/home.php:64 template/resource.php:39
 msgid "Home"
 msgstr "Ínicio"
 
-#: template/home.php:66
-#: template/home.php:68
-#: template/resource.php:40
+#: template/home.php:66 template/home.php:68 template/resource.php:40
 #: template/rss.php:52
 msgid "Multimedia"
 msgstr "Multimídia"
@@ -115,9 +118,7 @@ msgstr "Ver detalhes"
 msgid "Available languages"
 msgstr "Idiomas disponíveis"
 
-#: template/home.php:139
-#: template/home.php:140
-#: template/resource.php:226
+#: template/home.php:139 template/home.php:140 template/resource.php:226
 #: template/resource.php:227
 msgid "Search"
 msgstr "Pesquisa"
@@ -166,8 +167,7 @@ msgstr "Dimensão"
 msgid "Subject(s)"
 msgstr "Assunto(s)"
 
-#: template/resource.php:136
-#: template/resource.php:142
+#: template/resource.php:136 template/resource.php:142
 msgid "Share"
 msgstr "Compartilhar"
 
@@ -222,4 +222,3 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "http://reddes.bvsalud.org/"
 msgstr ""
-

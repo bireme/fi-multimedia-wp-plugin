@@ -42,6 +42,63 @@ function multimedia_page_admin() {
                             <th scope="row"><?php _e('Google Analytics code', 'multimedia'); ?>:</th>
                             <td><input type="text" name="multimedia_config[google_analytics_code]" value="<?php echo $config['google_analytics_code'] ?>" class="regular-text code"></td>
                         </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php _e('Sidebar order', 'multimedia');?>:</th>
+
+                            <?php
+                              if(!isset($config['available_filter'])){
+                                $config['available_filter'] = 'Collection;Subjects;Media type';
+                                $order = explode(';', $config['available_filter'] );
+
+                              }else {
+                                $order = explode(';', $config['available_filter'] );
+                            }
+
+                            ?>
+
+                            <td>
+
+
+                              <table border=0>
+                                <tr>
+                                <td >
+                                    <p align="right"><?php _e('Available', 'multimedia');?><br>
+                                      <ul id="sortable1" class="droptrue">
+                                      <?php
+                                      if(!in_array('Collection', $order) && !in_array('Collection ', $order) ){
+                                      	echo '<li class="ui-state-default" id="Collection">'.translate('Collection','multimedia').'</li>';
+                                      }
+                                      if(!in_array('Subjects', $order) && !in_array('Subjects ', $order) ){
+                                      	echo '<li class="ui-state-default" id="Subjects">'.translate('Subjects','multimedia').'</li>';
+                                      }
+                                      if(!in_array('Media type', $order) && !in_array('Media type ', $order) ){
+                                      	echo '<li class="ui-state-default" id="Media type">'.translate('Media type','multimedia').'</li>';
+                                      }
+                                      ?>
+                                      </ul>
+
+                                    </p>
+                                </td>
+
+                                <td >
+                                    <p align="left"><?php _e('Selected', 'multimedia');?> <br>
+                                      <ul id="sortable2" class="sortable-list">
+                                      <?php
+                                      foreach ($order as $index => $item) {
+                                        $item = trim($item); // Important
+                                        echo '<li class="ui-state-default" id="'.$item.'">'.translate($item ,'multimedia').'</li>';
+                                      }
+                                      ?>
+                                      </ul>
+                                      <input type="hidden" id="order_aux" name="multimedia_config[available_filter]" value="<?php echo trim($config['available_filter']); ?> " >
+
+                                    </p>
+                                </td>
+                                </tr>
+                                </table>
+
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -51,6 +108,25 @@ function multimedia_page_admin() {
 
             </form>
         </div>
+        <script type="text/javascript">
+            $j( function() {
+              $j( "ul.droptrue" ).sortable({
+                connectWith: "ul"
+              });
+
+              $j('.sortable-list').sortable({
+
+                connectWith: 'ul',
+                update: function(event, ui) {
+                  var changedList = this.id;
+                  var order = $j(this).sortable('toArray');
+                  var positions = order.join(';');
+                  $j('#order_aux').val(positions);
+
+                }
+              });
+            } );
+        </script>
 
         <?php
 }

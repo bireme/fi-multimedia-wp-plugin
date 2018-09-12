@@ -72,6 +72,19 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
+#: settings.php:55
+msgid "Sidebar order"
+msgstr ""
+
+#: settings.php:56
+msgid "Available"
+msgstr ""
+
+#: settings.php:57
+msgid "Selected"
+msgstr ""
+
+
 #: template/home.php:64 template/resource.php:39
 msgid "Home"
 msgstr ""

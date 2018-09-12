@@ -1,6 +1,6 @@
 /*
 	Theme Name: LIS
-	Theme URI: 
+	Theme URI:
 	Description: Localizador de Informação em Saúde
 	Version: 1.0
 	Author: BIREME/OPAS/OMS
@@ -272,7 +272,7 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
                 color-stop(0.6, #29B3FD),
                 color-stop(0.85, #0E85CA)
         );
-} 
+}
 @media (min-width: 766px) and (max-width: 999px) {
 	.container{width:95% !important;margin: 0 2.5% !important;}
 	#conteudo{width: 95%;margin: 0 2.5%;}

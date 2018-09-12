@@ -151,79 +151,87 @@ $pages->paginate($page_url_params);
                     <?php dynamic_sidebar('multimedia-home');?>
 
                     <?php if (strval($total) > 0) :?>
-        				<section class="row-fluid marginbottom25 widget_categories">
-        					<header class="row-fluid border-bottom marginbottom15">
-        						<h1 class="h1-header"><?php _e('Subjects','multimedia'); ?></h1>
-        					</header>
-        					<ul>
-                                <?php foreach ( $descriptor_list as $descriptor) { ?>
-                                    <li class="cat-item">
-                                        <?php
-                                            $filter_link = '?';
-                                            if ($query != ''){
-                                                $filter_link .= 'q=' . $query . '&';
-                                            }
-                                            $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
-                                            if ($user_filter != ''){
-                                                $filter_link .= ' AND ' . $user_filter ;
-                                            }
-                                        ?>
-                                        <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
-                                        <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-                                    </li>
+
+                      <?php
+                            $order = explode(';', $mm_config['available_filter']);
+                            foreach ( $order as $index => $content) { ?>
+
+                            <?php  if($content == 'Collection'){ ?>
+                                <section class="row-fluid marginbottom25 widget_categories">
+                                    <header class="row-fluid border-bottom marginbottom15">
+                                        <h1 class="h1-header"><?php _e('Collection','multimedia'); ?></h1>
+                                    </header>
+                                    <ul>
+                                        <?php foreach ( $collection_filter as $collection) { ?>
+                                            <?php
+                                                $filter_link = '?';
+                                                if ($query != ''){
+                                                    $filter_link .= 'q=' . $query . '&';
+                                                }
+                                                $filter_link .= 'filter=media_collection_filter:"' . $collection[0] . '"';
+                                                if ($user_filter != ''){
+                                                    $filter_link .= ' AND ' . $user_filter ;
+                                                }
+                                            ?>
+                                            <li class="cat-item">
+                                                <a href='<?php echo $filter_link; ?>'><?php echo $collection[0]; ?></a>
+                                                <span class="cat-item-count"><?php echo $collection[1] ?></span>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                </section>
+                            <?php  }  ?>
+                            <?php if($content == 'Subjects'){ ?>
+                              <section class="row-fluid marginbottom25 widget_categories">
+                              <header class="row-fluid border-bottom marginbottom15">
+                              <h1 class="h1-header"><?php _e('Subjects','multimedia'); ?></h1>
+                              </header>
+                              <ul>
+                                        <?php foreach ( $descriptor_list as $descriptor) { ?>
+                                            <li class="cat-item">
+                                                <?php
+                                                    $filter_link = '?';
+                                                    if ($query != ''){
+                                                        $filter_link .= 'q=' . $query . '&';
+                                                    }
+                                                    $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                                                    if ($user_filter != ''){
+                                                        $filter_link .= ' AND ' . $user_filter ;
+                                                    }
+                                                ?>
+                                                <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
+                                                <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                            </li>
+                                        <?php } ?>
+                              </ul>
+                              </section>
+                            <?php  } ?>
+                            <?php if($content == 'Media type'){ ?>
+                                  <section class="row-fluid marginbottom25 widget_categories">
+                                      <header class="row-fluid border-bottom marginbottom15">
+                                          <h1 class="h1-header"><?php _e('Media type','multimedia'); ?></h1>
+                                      </header>
+                                      <ul>
+                                          <?php foreach ( $media_type_filter as $type) { ?>
+                                              <?php
+                                                  $filter_link = '?';
+                                                  if ($query != ''){
+                                                      $filter_link .= 'q=' . $query . '&';
+                                                  }
+                                                  $filter_link .= 'filter=media_type_filter:"' . $type[0] . '"';
+                                                  if ($user_filter != ''){
+                                                      $filter_link .= ' AND ' . $user_filter ;
+                                                  }
+                                              ?>
+                                              <li class="cat-item">
+                                                  <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
+                                                  <span class="cat-item-count"><?php echo $type[1] ?></span>
+                                              </li>
+                                          <?php } ?>
+                                      </ul>
+                                  </section>
                                 <?php } ?>
-        					</ul>
-        				</section>
-
-                        <section class="row-fluid marginbottom25 widget_categories">
-                            <header class="row-fluid border-bottom marginbottom15">
-                                <h1 class="h1-header"><?php _e('Collection','multimedia'); ?></h1>
-                            </header>
-                            <ul>
-                                <?php foreach ( $collection_filter as $collection) { ?>
-                                    <?php
-                                        $filter_link = '?';
-                                        if ($query != ''){
-                                            $filter_link .= 'q=' . $query . '&';
-                                        }
-                                        $filter_link .= 'filter=media_collection_filter:"' . $collection[0] . '"';
-                                        if ($user_filter != ''){
-                                            $filter_link .= ' AND ' . $user_filter ;
-                                        }
-                                    ?>
-                                    <li class="cat-item">
-                                        <a href='<?php echo $filter_link; ?>'><?php echo $collection[0]; ?></a>
-                                        <span class="cat-item-count"><?php echo $collection[1] ?></span>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                        </section>
-
-                        <section class="row-fluid marginbottom25 widget_categories">
-                            <header class="row-fluid border-bottom marginbottom15">
-                                <h1 class="h1-header"><?php _e('Media type','multimedia'); ?></h1>
-                            </header>
-                            <ul>
-                                <?php foreach ( $media_type_filter as $type) { ?>
-                                    <?php
-                                        $filter_link = '?';
-                                        if ($query != ''){
-                                            $filter_link .= 'q=' . $query . '&';
-                                        }
-                                        $filter_link .= 'filter=media_type_filter:"' . $type[0] . '"';
-                                        if ($user_filter != ''){
-                                            $filter_link .= ' AND ' . $user_filter ;
-                                        }
-                                    ?>
-                                    <li class="cat-item">
-                                        <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
-                                        <span class="cat-item-count"><?php echo $type[1] ?></span>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                        </section>
-
-
+                        <?php   } ?>
                     <?php endif; ?>
 			</aside>
 			<div class="spacer"></div>
