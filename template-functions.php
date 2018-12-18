@@ -123,6 +123,8 @@ if ( !function_exists('display_thumbnail') ) {
             $video_id = $link_data['path'];
         }elseif (strpos($link_data['host'],'flickr.com') !== false) {
             $service = 'flicker';
+        }elseif (strpos($link_data['host'],'slideshare.net') !== false) {
+            $service = 'slideshare';
         }
 
         if ($service == 'youtube'){
@@ -131,6 +133,11 @@ if ( !function_exists('display_thumbnail') ) {
             echo '<iframe src="//player.vimeo.com/video' . $video_id . '" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
         }elseif ($service == 'flicker'){
             echo '<iframe src="' . $link . '/player/" width="320" height="211" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>';
+        }elseif ($service == 'slideshare'){
+            $embed_service_url = 'http://www.slideshare.net/api/oembed/2?url=' . $link . '&format=json';
+            $embed_service_response = file_get_contents($embed_service_url);
+            $embed_service_data = json_decode($embed_service_response, true);
+            echo $embed_service_data['html'];
         }
     }
 }
