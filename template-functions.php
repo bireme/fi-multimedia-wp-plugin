@@ -134,7 +134,7 @@ if ( !function_exists('display_thumbnail') ) {
         }elseif ($service == 'flicker'){
             echo '<iframe src="' . $link . '/player/" width="320" height="211" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>';
         }elseif ($service == 'slideshare'){
-            $embed_service_url = '//www.slideshare.net/api/oembed/2?url=' . $link . '&format=json';
+            $embed_service_url = 'https://www.slideshare.net/api/oembed/2?url=' . $link . '&format=json';
             $embed_service_response = file_get_contents($embed_service_url);
             $embed_service_data = json_decode($embed_service_response, true);
             echo $embed_service_data['html'];
