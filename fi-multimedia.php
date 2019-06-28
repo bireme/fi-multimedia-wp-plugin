@@ -182,7 +182,8 @@ if(!class_exists('FI_Multimedia_Plugin')) {
         function register_settings(){
             register_setting('multimedia-settings-group', 'multimedia_config');
             wp_enqueue_style ('multimedia',  PLUGIN_URL . 'template/css/admin.css');
-            wp_enqueue_script('multimedia',  PLUGIN_URL . 'template/js/jquery-ui.js');
+            // wp_enqueue_script('multimedia',  PLUGIN_URL . 'template/js/jquery-ui.js');
+            wp_enqueue_script('jquery-ui-sortable');
         }
 
         function google_analytics_code(){
