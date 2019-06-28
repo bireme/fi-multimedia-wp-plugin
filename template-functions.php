@@ -128,13 +128,13 @@ if ( !function_exists('display_thumbnail') ) {
         }
 
         if ($service == 'youtube'){
-            echo '<iframe width="474" height="356" src="http://www.youtube.com/embed/' . $video_id . '" frameborder="0" allowfullscreen></iframe>';
+            echo '<iframe width="474" height="356" src="//www.youtube.com/embed/' . $video_id . '" frameborder="0" allowfullscreen></iframe>';
         }elseif ($service == 'vimeo'){
             echo '<iframe src="//player.vimeo.com/video' . $video_id . '" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
         }elseif ($service == 'flicker'){
             echo '<iframe src="' . $link . '/player/" width="320" height="211" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>';
         }elseif ($service == 'slideshare'){
-            $embed_service_url = 'http://www.slideshare.net/api/oembed/2?url=' . $link . '&format=json';
+            $embed_service_url = 'https://www.slideshare.net/api/oembed/2?url=' . $link . '&format=json';
             $embed_service_response = file_get_contents($embed_service_url);
             $embed_service_data = json_decode($embed_service_response, true);
             echo $embed_service_data['html'];
