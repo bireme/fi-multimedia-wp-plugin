@@ -45,10 +45,11 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             add_action( 'wp_head', array(&$this, 'google_analytics_code'));
             add_action( 'template_redirect', array(&$this, 'template_redirect'));
             add_action( 'widgets_init', array(&$this, 'register_sidebars'));
+            add_action( 'after_setup_theme', array(&$this, 'title_tag_setup'), 999);
             add_filter( 'get_search_form', array(&$this, 'search_form'));
+            add_filter( 'document_title_separator', array(&$this, 'title_tag_sep') );
             add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
-
-
+            add_filter( 'wp_title', array(&$this, 'theme_slug_render_wp_title'));
 
         } // END public function __construct
 
@@ -67,7 +68,6 @@ if(!class_exists('FI_Multimedia_Plugin')) {
         {
             // Do nothing
         } // END public static function deactivate
-
 
         function load_translation(){
             // Translations
@@ -142,6 +142,9 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             register_sidebar( $args );
         }
 
+        function title_tag_sep(){
+            return '|';
+        }
 
         function theme_slug_render_title($title) {
             global $wp, $mm_plugin_title;
@@ -154,12 +157,32 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             }
 
             if ( is_404() && $pos_slug !== false ){
-                $title['title'] = 'Multimedia | ' . get_bloginfo('name');
+                $title['title'] = 'Multimedia';
             }
 
             return $title;
         }
 
+        function theme_slug_render_wp_title($title) {
+            global $wp, $mm_plugin_title;
+            $pagename = '';
+
+            // check if request contains plugin slug string
+            $pos_slug = strpos($wp->request, $this->plugin_slug);
+            if ( $pos_slug !== false ){
+                $pagename = substr($wp->request, $pos_slug);
+            }
+
+            if ( is_404() && $pos_slug !== false ){
+                $title = 'Multimedia | ';
+            }
+
+            return $title;
+        }
+
+        function title_tag_setup() {
+            add_theme_support( 'title-tag' );
+        }
 
         function search_form( $form ) {
 		    global $wp;
