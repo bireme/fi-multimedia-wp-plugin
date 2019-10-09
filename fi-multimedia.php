@@ -45,7 +45,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             add_action( 'wp_head', array(&$this, 'google_analytics_code'));
             add_action( 'template_redirect', array(&$this, 'template_redirect'));
             add_action( 'widgets_init', array(&$this, 'register_sidebars'));
-            add_action( 'after_setup_theme', array(&$this, 'title_tag_setup'), 999);
+            add_action( 'after_setup_theme', array(&$this, 'title_tag_setup'));
             add_filter( 'get_search_form', array(&$this, 'search_form'));
             add_filter( 'document_title_separator', array(&$this, 'title_tag_sep') );
             add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
