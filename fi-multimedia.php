@@ -157,7 +157,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             }
 
             if ( is_404() && $pos_slug !== false ){
-                $title['title'] = 'Multimedia';
+                $title['title'] = __('Multimedia', 'multimedia');
             }
 
             return $title;
@@ -174,7 +174,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             }
 
             if ( is_404() && $pos_slug !== false ){
-                $title = 'Multimedia | ';
+                $title = __('Multimedia', 'multimedia') . ' | ';
             }
 
             return $title;
