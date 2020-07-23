@@ -30,7 +30,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
     class FI_Multimedia_Plugin {
 
         private $plugin_slug = 'multimedia';
-        private $service_url = 'http://fi-admin.data.bvsalud.org/';
+        private $service_url = 'https://fi-admin-api.bvsalud.org/';
 
         /**
          * Construct the plugin object
