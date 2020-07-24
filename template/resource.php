@@ -34,8 +34,9 @@ if ($response){
     }
 
     $similar_docs_url = $similar_docs_url . '?adhocSimilarDocs=' . urlencode($similar_text);
-    $similar_docs_url = ( $mm_config['default_filter_db'] ) ? $similar_docs_url . '&sources=' . $mm_config['default_filter_db'] : $similar_docs_url;
-    $similar_query = urlencode($similar_docs_url);
+    $similar_docs_request = ( $mm_config['default_filter_db'] ) ? $similar_docs_url . '&sources=' . $mm_config['default_filter_db'] : $similar_docs_url;
+    $similar_query = urlencode($similar_docs_request);
+    $related_query = urlencode($similar_docs_url);
 }
 
 ?>
@@ -228,9 +229,26 @@ if ($response){
                         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                     <?php endif; ?>
-
                 </article>
             </div>
+            <div class="row-fluid">
+                <header class="row-fluid border-bottom marginbottom15">
+                    <h1 class="h1-header"><?php _e('More related','multimedia'); ?></h1>
+                </header>
+                <div id="loader" class="loader" style="display: inline-block;"></div>
+            </div>
+            <div class="row-fluid">
+                <div id="async" class="related-docs">
+
+                </div>
+            </div>
+<?php
+$sources = ( $mm_config['extra_filter_db'] ) ? $mm_config['extra_filter_db'] : '';
+$url = PLUGIN_URL.'template/related.php?query='.$related_query.'&sources='.$sources.'&lang='.$lang_dir;
+?>
+<script type="text/javascript">
+    show_related("<?php echo $url; ?>");
+</script>
         </section>
 
         <aside id="sidebar">
@@ -245,7 +263,7 @@ if ($response){
 
             <section class="row-fluid marginbottom25 widget_categories">
                 <header class="row-fluid border-bottom marginbottom15">
-                    <h1 class="h1-header"><?php _e('Related','direve'); ?></h1>
+                    <h1 class="h1-header"><?php _e('Related','multimedia'); ?></h1>
                 </header>
                 <ul id="ajax">
 

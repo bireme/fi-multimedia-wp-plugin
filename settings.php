@@ -71,9 +71,16 @@ function multimedia_page_admin() {
                         <td><input type="text" name="multimedia_config[google_analytics_code]" value="<?php echo $config['google_analytics_code'] ?>" class="regular-text code"></td>
                     </tr>
                     <tr valign="top">
-                        <th scope="row"><?php _e('Related documents filter', 'multimedia'); ?>:</th>
+                        <th scope="row"><?php _e('Related Documents filter', 'multimedia'); ?>:</th>
                         <td>
                             <input type="text" name="multimedia_config[default_filter_db]" value='<?php echo $config['default_filter_db']; ?>' class="regular-text code">
+                            <small style="display: block;">* <?php _e('The filters must be separated by commas.', 'multimedia'); ?></small>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><?php _e('More Related Documents filter', 'multimedia'); ?>:</th>
+                        <td>
+                            <input type="text" name="multimedia_config[extra_filter_db]" value='<?php echo $config['extra_filter_db']; ?>' class="regular-text code">
                             <small style="display: block;">* <?php _e('The filters must be separated by commas.', 'multimedia'); ?></small>
                         </td>
                     </tr>

@@ -132,3 +132,25 @@ function show_similar(url){
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
+
+function show_related(url){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var loader = document.getElementById("loader");
+            loader.parentNode.removeChild(loader);
+            document.getElementById("async").innerHTML = this.responseText;
+
+            $j('#async').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: false,
+                autoplaySpeed: 3000,
+                infinite: true,
+                dots: false
+            });
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
