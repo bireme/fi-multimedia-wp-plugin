@@ -128,6 +128,8 @@ if ( !function_exists('display_thumbnail') ) {
             $service = 'flicker';
         } elseif (strpos($link_data['host'],'slideshare.net') !== false) {
             $service = 'slideshare';
+        } elseif (strpos($link_data['host'],'soundcloud.com') !== false) {
+            $service = 'soundcloud';
         }
 
         if ($service == 'youtube') {
@@ -141,6 +143,15 @@ if ( !function_exists('display_thumbnail') ) {
             $embed_service_response = file_get_contents($embed_service_url);
             $embed_service_data = json_decode($embed_service_response, true);
             echo $embed_service_data['html'];
+        } elseif ($service == 'soundcloud') {
+            //get the JSON data of song details with embed code from SoundCloud oEmbed
+            $getValues=file_get_contents('http://soundcloud.com/oembed?format=js&url='.$link.'&iframe=true');
+            //clean the Json to decode
+            $decodeiFrame=substr($getValues, 1, -2);
+            //json decode to convert it as an array
+            $jsonObj = json_decode($decodeiFrame);
+            //print the embed player to the page
+            echo str_replace('height="400"', 'height="240"', $jsonObj->html);
         } elseif ( 'pdf' == $ext ) {
             echo '<iframe src="https://drive.google.com/viewerng/viewer?embedded=true&url=' . $link . '" width="500" height="400" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>';
         } elseif ( in_array(strtolower($ext), $img_ext) ) {
