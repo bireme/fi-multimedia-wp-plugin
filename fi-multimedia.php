@@ -31,6 +31,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
 
         private $plugin_slug = 'multimedia';
         private $service_url = 'https://fi-admin-api.bvsalud.org/';
+        private $similar_docs_url = 'http://similardocs.bireme.org/SDService';
 
         /**
          * Construct the plugin object
@@ -92,7 +93,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
 
 
         function template_redirect() {
-            global $wp, $mm_service_url, $mm_plugin_slug;
+            global $wp, $mm_service_url, $mm_plugin_slug, $similar_docs_url;
             $pagename = $wp->query_vars["pagename"];
 
             // check if request contains plugin slug string
@@ -105,6 +106,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
 
                 $mm_service_url = $this->service_url;
                 $mm_plugin_slug = $this->plugin_slug;
+                $similar_docs_url = $this->similar_docs_url;
 
                 if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
                     || $pagename == $this->plugin_slug . '/multimedia-feed') {
@@ -196,8 +198,11 @@ if(!class_exists('FI_Multimedia_Plugin')) {
 		}
 
         function page_template_styles_scripts(){
-            wp_enqueue_script('multimedia',  PLUGIN_URL . 'template/js/functions.js');
-            wp_enqueue_style ('multimedia',  PLUGIN_URL . 'template/css/style.css');
+            wp_enqueue_script('slick-js', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js');
+            wp_enqueue_script('multimedia', PLUGIN_URL . 'template/js/functions.js');
+            wp_enqueue_style('slick-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css');
+            wp_enqueue_style('slick-theme-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css');
+            wp_enqueue_style('multimedia', PLUGIN_URL . 'template/css/style.css');
 
         }
 

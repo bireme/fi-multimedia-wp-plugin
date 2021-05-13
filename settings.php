@@ -3,6 +3,36 @@ function multimedia_page_admin() {
 
     $config = get_option('multimedia_config');
 
+    $filter_db = array(
+        "MEDLINE" => __("MEDLINE", "biblio"),
+        "LILACS" => __("LILACS", "biblio"),
+        "MedCarib" => __("MedCarib", "biblio"),
+        "BBO" => __("BBO - Dentistry", "biblio"),
+        "colecionaSUS" => __("Coleciona SUS", "biblio"),
+        "BDENF" => __("BDENF - Nursing", "biblio"),
+        "IBECS" => __("IBECS", "biblio"),
+        "tese" => __("Index Psychology - Theses", "biblio"),
+        "SIRPEP" => __("Index Psychology - Scientific divulgation", "biblio"),
+        "RIPSA-CONSULTA" => __("RIPSA", "biblio"),
+        "RIPSA-RELATORIOS" => __("RIPSA - Reports", "biblio"),
+        "RIPSA-PRODUTOS" => __("RIPSA - Products", "biblio"),
+        "fichasidb" => __("RIPSA - Qualification record", "biblio"),
+        "RIPSA-NORMATIVOS" => __("RIPSA - Normative acts", "biblio"),
+        "Puerto" => __("Theses - Puerto Rico", "biblio"),
+        "A_DOLEC" => __("ADOLEC - Adolescence", "biblio"),
+        "CidSaude" => __("CidSaúde - Healthy Cities", "biblio"),
+        "DESASTRES" => __("Desastres - Disasters", "biblio"),
+        "HANSENIASE" => __("Hanseníase - Leprosy", "biblio"),
+        "HISA" => __("HISA - History of Health", "biblio"),
+        "HomeoIndex" => __("HomeoIndex - Homeopathy", "biblio"),
+        "INDEXPSI" => __("Index Psychology - Scientific journals", "biblio"),
+        "REPIDISCA" => __("REPIDISCA", "biblio"),
+        "respostas_aps" => __("SOF - Formative Second Opinion", "biblio"),
+        "PAHO" => __("PAHO", "biblio"),
+        "WHOLIS" => __("WHO IRIS", "biblio"),
+        "CUMED" => __("CUMED", "biblio"),
+    );
+
     ?>
     <div class="wrap">
         <div id="icon-options-general" class="icon32"></div>
@@ -39,6 +69,20 @@ function multimedia_page_admin() {
                     <tr valign="top">
                         <th scope="row"><?php _e('Google Analytics code', 'multimedia'); ?>:</th>
                         <td><input type="text" name="multimedia_config[google_analytics_code]" value="<?php echo $config['google_analytics_code'] ?>" class="regular-text code"></td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><?php _e('Related Documents filter', 'multimedia'); ?>:</th>
+                        <td>
+                            <input type="text" name="multimedia_config[default_filter_db]" value='<?php echo $config['default_filter_db']; ?>' class="regular-text code">
+                            <small style="display: block;">* <?php _e('The filters must be separated by commas.', 'multimedia'); ?></small>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row"><?php _e('More Related Documents filter', 'multimedia'); ?>:</th>
+                        <td>
+                            <input type="text" name="multimedia_config[extra_filter_db]" value='<?php echo $config['extra_filter_db']; ?>' class="regular-text code">
+                            <small style="display: block;">* <?php _e('The filters must be separated by commas.', 'multimedia'); ?></small>
+                        </td>
                     </tr>
                     <tr valign="top">
                         <th scope="row"><?php _e('Sidebar order', 'multimedia');?>:</th>
