@@ -13,11 +13,12 @@ $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
 // set query using default param q (query) or s (wordpress search) or newexpr (metaiah)
-$query = $_GET['s'] . $_GET['q'];
+$query = sanitize_text_field($_GET['s']) . sanitize_text_field($_GET['q']);
 $query = stripslashes( trim($query) );
 
-$user_filter = stripslashes($_GET['filter']);
-$page = ( isset($_GET['page']) ? $_GET['page'] : 1 );
+$sanitize_user_filter = sanitize_text_field($_GET['filter']);
+$user_filter = stripslashes($sanitize_user_filter);
+$page = ( isset($_GET['page']) ? sanitize_text_field($_GET['page']) : 1 );
 $total = 0;
 $count = 10;
 $filter = '';

@@ -7,7 +7,7 @@ global $mm_service_url, $mm_plugin_slug, $similar_docs_url;
 $mm_config = get_option('multimedia_config');
 
 $request_uri = $_SERVER["REQUEST_URI"];
-$resource_id   = $_GET['id'];
+$resource_id = sanitize_text_field($_GET['id']);
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
