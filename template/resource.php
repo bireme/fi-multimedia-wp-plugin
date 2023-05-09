@@ -63,7 +63,7 @@ if ($response){
                         </p>
                     <?php endif; ?>
 
-                    <p class="row-fluid margintop05">
+                    <p class="row-fluid media-src margintop05">
                         <a href="<?php echo $resource->link[0]; ?>"><?php echo $resource->link[0]; ?></a><br/>
                     </p>
 

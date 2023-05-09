@@ -3,12 +3,13 @@
 class Paginator{
     var $total;
     var $start;
+    var $count;
     var $output;
     var $pag = array();
     var $default_count = 10;
     var $current_page;
 
-    function Paginator($total, $start)
+    function __construct($total, $start)
     {
         $this->total = $total;
         $this->start = $start;
@@ -19,7 +20,7 @@ class Paginator{
     function paginate($page_url_params){
         $pag['total'] = $this->total;
         $pag['total_formatted'] = number_format($pag['total'], 0, ',', '.');
-        $pag['start'] = $this->start;
+	$pag['start'] = $this->start;
         $pag['total_pages'] = (($pag['total']/$this->count) % 10 == 0) ? (int)($pag['total']/$this->count) : (int)($pag['total']/$this->count+1);
         $pag['count'] = $this->count;
 

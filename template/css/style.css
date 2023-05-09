@@ -303,6 +303,10 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
     padding: 5px 0;
 }
 
+.media-src {
+    overflow-wrap: anywhere;
+}
+
 /* Loader */
 .loader {
     border: 2px solid #f3f3f3; /* Light grey */
