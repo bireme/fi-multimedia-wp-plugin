@@ -17,7 +17,7 @@ $mm_addthis_id = $mm_config['addthis_profile_id'];
 
 $mm_service_request = $mm_service_url . 'api/multimedia/search/?id=' .$resource_id . '&op=related&lang=' . $lang_dir;
 
-//print $mm_service_request;
+// echo "<pre>"; print_r($mm_service_request); echo "</pre>"; die();
 
 $response = @file_get_contents($mm_service_request);
 
@@ -85,14 +85,14 @@ if ($response){
                     <?php if ($resource->authors): ?>
                         <span class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Author(s)','multimedia'); ?>:</span>
-                            <?php echo implode(", ", $resource->authors); ?>
+                            <?php echo implode("; ", $resource->authors); ?>
                         </span>
                     <?php endif; ?>
 
                     <?php if ($resource->contributors): ?>
                         <span class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Contributor(s)','multimedia'); ?>:</span>
-                            <?php echo implode(", ", $resource->contributors); ?>
+                            <?php echo implode("; ", $resource->contributors); ?>
                         </span>
                     <?php endif; ?>
 
@@ -133,7 +133,7 @@ if ($response){
                                     $descriptors = (array)$resource->descriptor;
                                     $keywords = (array)$resource->keyword;
                                 ?>
-                                <strong><?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?></strong>
+                                <strong><?php echo implode("; ", array_merge( $descriptors, $keywords) ); ?></strong>
                           </div>
                     <?php endif; ?>
 
@@ -143,6 +143,18 @@ if ($response){
                         </div>
                     <?php endif; ?>
 
+                    <?php if ($resource->related_links) : ?>
+                        <span class="row-fluid margintop05 related-links">
+                            <span class="conteudo-loop-data-tit"><?php _e('Related Links','multimedia'); ?>:</span>
+                            <br />
+                            <?php foreach ($resource->related_links as $link) : ?>
+                                <?php if (filter_var($link, FILTER_VALIDATE_URL) !== false) : ?>
+                                    <a href="#" target="_blank"><i class="fa-solid fa-square-up-right"></i> <?php echo $link; ?></a>
+                                    <br />
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </span>
+                    <?php endif; ?>
 
                     <footer class="row-fluid margintop05">
                         <ul class="conteudo-loop-icons">
