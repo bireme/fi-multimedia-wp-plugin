@@ -310,6 +310,9 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
 
 .related-links {
     margin-bottom: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /* Loader */

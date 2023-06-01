@@ -4,28 +4,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FI-Multimedia 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/fi-multimedia\n"
-"POT-Creation-Date: 2014-09-09 14:30:18+00:00\n"
-"PO-Revision-Date: 2018-09-03 17:01-0300\n"
+"POT-Creation-Date: 2023-06-01 14:54-0300\n"
+"PO-Revision-Date: 2023-06-01 14:57-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: fi-multimedia.php:84
+#: fi-multimedia.php:88
 msgid "Multimedia Settings"
 msgstr "Multimedia Ajustes"
 
-#. Plugin Name of the plugin/theme
-#: fi-multimedia.php:84
+#: fi-multimedia.php:88
 msgid "FI-Multimedia"
 msgstr "FI-Multimedia"
 
-#: fi-multimedia.php:119
+#: fi-multimedia.php:136
 msgid "Multimedia sidebar"
 msgstr "Multimedia area de destacados"
+
+#: fi-multimedia.php:162 fi-multimedia.php:179 template/home.php:67
+#: template/home.php:69 template/resource.php:50 template/rss.php:53
+msgid "Multimedia"
+msgstr "Multimedia"
 
 #: lib/Paginator.php:35 lib/Paginator.php:36 lib/Paginator.php:47
 #: lib/Paginator.php:53 lib/Paginator.php:62 lib/Paginator.php:63
@@ -33,192 +40,308 @@ msgstr "Multimedia area de destacados"
 msgid "go to page"
 msgstr "ir para pagina"
 
+#: settings.php:7
+msgid "MEDLINE"
+msgstr ""
+
+#: settings.php:8
+msgid "LILACS"
+msgstr ""
+
 #: settings.php:9
+msgid "MedCarib"
+msgstr ""
+
+#: settings.php:10
+msgid "BBO - Dentistry"
+msgstr ""
+
+#: settings.php:11
+msgid "Coleciona SUS"
+msgstr ""
+
+#: settings.php:12
+msgid "BDENF - Nursing"
+msgstr ""
+
+#: settings.php:13
+msgid "IBECS"
+msgstr ""
+
+#: settings.php:14
+msgid "Index Psychology - Theses"
+msgstr ""
+
+#: settings.php:15
+msgid "Index Psychology - Scientific divulgation"
+msgstr ""
+
+#: settings.php:16
+msgid "RIPSA"
+msgstr ""
+
+#: settings.php:17
+msgid "RIPSA - Reports"
+msgstr ""
+
+#: settings.php:18
+msgid "RIPSA - Products"
+msgstr ""
+
+#: settings.php:19
+msgid "RIPSA - Qualification record"
+msgstr ""
+
+#: settings.php:20
+msgid "RIPSA - Normative acts"
+msgstr ""
+
+#: settings.php:21
+msgid "Theses - Puerto Rico"
+msgstr ""
+
+#: settings.php:22
+msgid "ADOLEC - Adolescence"
+msgstr ""
+
+#: settings.php:23
+msgid "CidSaúde - Healthy Cities"
+msgstr ""
+
+#: settings.php:24
+msgid "Desastres - Disasters"
+msgstr ""
+
+#: settings.php:25
+msgid "Hanseníase - Leprosy"
+msgstr ""
+
+#: settings.php:26
+msgid "HISA - History of Health"
+msgstr ""
+
+#: settings.php:27
+msgid "HomeoIndex - Homeopathy"
+msgstr ""
+
+#: settings.php:28
+msgid "Index Psychology - Scientific journals"
+msgstr ""
+
+#: settings.php:29
+msgid "REPIDISCA"
+msgstr ""
+
+#: settings.php:30
+msgid "SOF - Formative Second Opinion"
+msgstr ""
+
+#: settings.php:31
+msgid "PAHO"
+msgstr ""
+
+#: settings.php:32
+msgid "WHO IRIS"
+msgstr ""
+
+#: settings.php:33
+msgid "CUMED"
+msgstr ""
+
+#: settings.php:39
 msgid "FI-Multimedia Plugin Options"
 msgstr "FI-Multimedia Opciones del plugin"
 
-#: settings.php:18
-msgid "Service URL"
-msgstr "URL del servicio"
-
-#: settings.php:22
+#: settings.php:47
 msgid "Plugin page"
 msgstr "Pagina del plugin"
 
-#: settings.php:27
+#: settings.php:51
 msgid "Filter query"
 msgstr "Filtro de búsqueda"
 
-#: settings.php:31
+#: settings.php:55
 msgid "Search form"
 msgstr "Formulario de búsqueda"
 
-#: settings.php:34
+#: settings.php:58
 msgid "Show search form"
 msgstr "Mostrar formulario de búsqueda"
 
-#: settings.php:38
+#: settings.php:62
 msgid "Disqus shortname"
 msgstr "Disqus identificador"
 
-#: settings.php:42
+#: settings.php:66
 msgid "AddThis profile ID"
 msgstr "AddThis identificador"
 
-#: settings.php:46
+#: settings.php:70
 msgid "Google Analytics code"
 msgstr "Codigo del Google Analytics"
 
-#: settings.php:53
-msgid "Save Changes"
-msgstr "Guardar Cambios"
+#: settings.php:74
+msgid "Related Documents filter"
+msgstr ""
 
-#: settings.php:55
+#: settings.php:77 settings.php:84
+msgid "The filters must be separated by commas."
+msgstr ""
+
+#: settings.php:81
+msgid "More Related Documents filter"
+msgstr ""
+
+#: settings.php:88
 msgid "Sidebar order"
 msgstr "Orden de la barra lateral"
 
-#: settings.php:56
+#: settings.php:101
 msgid "Available"
 msgstr "Disponibles"
 
-#: settings.php:57
+#: settings.php:118
 msgid "Selected"
 msgstr "Seleccionado"
 
-#: template/home.php:64 template/resource.php:39
+#: settings.php:137
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+#: template/home.php:65 template/resource.php:49
 msgid "Home"
 msgstr "Inicio"
 
-#: template/home.php:66 template/home.php:68 template/resource.php:40
-#: template/rss.php:52
-msgid "Multimedia"
-msgstr "Multimedia"
-
-#: template/home.php:69
+#: template/home.php:70
 msgid "Search result"
 msgstr "Resultado de la búsqueda"
 
-#: template/home.php:75
+#: template/home.php:76
 msgid "No results found"
 msgstr "No se encontraron resultados"
 
-#: template/home.php:79
+#: template/home.php:80
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/home.php:81
+#: template/home.php:82
 msgid "Total of resources"
 msgstr "Total de recursos"
 
-#: template/home.php:99
+#: template/home.php:106
 msgid "See more details"
 msgstr "Ver más detalles"
 
-#: template/home.php:104
+#: template/home.php:111
 msgid "Available languages"
 msgstr "Idiomas disponibles"
 
-#: template/home.php:139 template/home.php:140 template/resource.php:226
-#: template/resource.php:227
+#: template/home.php:146 template/home.php:147 template/resource.php:270
+#: template/resource.php:271
 msgid "Search"
 msgstr "Buscar"
 
-#: template/home.php:150
-msgid "Subjects"
-msgstr "Asuntos"
-
-#: template/home.php:173
-msgid "Media type"
-msgstr "Tipo de medio"
-
-#: template/resource.php:41
-msgid "Resource"
-msgstr "Recurso"
-
-#: template/resource.php:64
+#: template/home.php:163 template/resource.php:72
 msgid "Collection"
 msgstr "Colección"
 
-#: template/resource.php:71
+#: template/home.php:188
+msgid "Subjects"
+msgstr "Asuntos"
+
+#: template/home.php:213
+msgid "Media type"
+msgstr "Tipo de medio"
+
+#: template/related.php:56 template/similar.php:41
+msgid "No related documents"
+msgstr "No se encontraron documentos relacionados"
+
+#: template/resource.php:51
+msgid "Resource"
+msgstr "Recurso"
+
+#: template/resource.php:87
 msgid "Author(s)"
 msgstr "Autor(es)"
 
-#: template/resource.php:78
+#: template/resource.php:94
 msgid "Contributor(s)"
 msgstr "Contribuidor(es)"
 
-#: template/resource.php:85
+#: template/resource.php:101
 msgid "Objective"
 msgstr "Objetivo"
 
-#: template/resource.php:92
+#: template/resource.php:108
 msgid "Language"
 msgstr "Idioma"
 
-#: template/resource.php:99
+#: template/resource.php:115
 msgid "Duration"
 msgstr "Duración"
 
-#: template/resource.php:106
-msgid "Dimension"
-msgstr "Dimensión"
+#: template/resource.php:122
+msgid "Publisher"
+msgstr ""
 
-#: template/resource.php:114
+#: template/resource.php:130
 msgid "Subject(s)"
 msgstr "Asunto(s)"
 
-#: template/resource.php:136 template/resource.php:142
+#: template/resource.php:148
+msgid "Related Links"
+msgstr "Enlaces Relacionados"
+
+#: template/resource.php:164 template/resource.php:170
 msgid "Share"
 msgstr "Compartir"
 
-#: template/resource.php:150
+#: template/resource.php:178
 msgid "Report error"
 msgstr "Informar un error"
 
-#: template/resource.php:159
+#: template/resource.php:187
 msgid "Reason"
 msgstr "Motivo"
 
-#: template/resource.php:163
+#: template/resource.php:191
 msgid "Invalid Link"
 msgstr "Link no es válido"
 
-#: template/resource.php:168
+#: template/resource.php:196
 msgid "Bad content"
 msgstr "Contenido inapropiado"
 
-#: template/resource.php:173
+#: template/resource.php:201
 msgid "Other"
 msgstr "Otro"
 
-#: template/resource.php:181
+#: template/resource.php:209
 msgid "Send"
 msgstr "Enviar"
 
-#: template/resource.php:188
+#: template/resource.php:216
 msgid "Thank you for your report."
 msgstr "Gracias por indicar el error."
 
-#: template/resource.php:191
+#: template/resource.php:219
 msgid "Communication problem. Please try again later."
 msgstr "Problema de Comunicación. Por favor inténte más tarde."
 
-#: template/resource.php:235
+#: template/resource.php:248
+msgid "More related"
+msgstr "Más Relacionados"
+
+#: template/resource.php:278
 msgid "Related"
 msgstr "Relacionados"
 
-#. Plugin URI of the plugin/theme
-msgid "http://reddes.bvsalud.org/projects/fi-admin/"
-msgstr ""
+#~ msgid "Service URL"
+#~ msgstr "URL del servicio"
 
-#. Description of the plugin/theme
-msgid "List multimedia metadata from FI-ADMIN."
-msgstr "Listar metadatos del tipo multimedia del sistema FI-ADMIN."
+#~ msgid "Dimension"
+#~ msgstr "Dimensión"
 
-#. Author of the plugin/theme
-msgid "BIREME/OPAS/OMS"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "http://reddes.bvsalud.org/"
-msgstr ""
+#~ msgid "List multimedia metadata from FI-ADMIN."
+#~ msgstr "Listar metadatos del tipo multimedia del sistema FI-ADMIN."

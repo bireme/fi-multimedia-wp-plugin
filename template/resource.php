@@ -149,7 +149,7 @@ if ($response){
                             <br />
                             <?php foreach ($resource->related_links as $link) : ?>
                                 <?php if (filter_var($link, FILTER_VALIDATE_URL) !== false) : ?>
-                                    <a href="#" target="_blank"><i class="fa-solid fa-square-up-right"></i> <?php echo $link; ?></a>
+                                    <a href="<?php echo $link; ?>" target="_blank"><i class="fa-solid fa-square-up-right"></i> <?php echo $link; ?></a>
                                     <br />
                                 <?php endif; ?>
                             <?php endforeach; ?>
