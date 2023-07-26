@@ -106,7 +106,7 @@ if ($response){
                     <?php if ($resource->language_display): ?>
                         <span class="row-fluid margintop05">
                            <span class="conteudo-loop-idiomas-tit"><?php _e('Language','multimedia'); ?>:</span>
-                           <?php print_lang_value($resource->language_display, $site_language); ?>
+                           <?php multimedia_print_lang_value($resource->language_display, $site_language); ?>
                         </span>
                     <?php endif; ?>
 
