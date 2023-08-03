@@ -58,10 +58,15 @@ if ($response){
             <div class="row-fluid">
                 <article class="conteudo-loop">
                     <?php if ($resource->title_translated[0]): ?>
-                        <p class="row-fluid">
+                        <div class="row-fluid">
                             <?php echo $resource->title_translated[0] ?>
-                        </p>
+                        </div>
                     <?php endif; ?>
+
+                    <p class="row-fluid">
+                        <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
+                        <?php echo format_date($resource->publication_date); ?>
+                    </p>
 
                     <p class="row-fluid media-src margintop05">
                         <a href="<?php echo $resource->link[0]; ?>"><?php echo $resource->link[0]; ?></a><br/>
