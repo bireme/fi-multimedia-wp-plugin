@@ -94,12 +94,17 @@ $pages->paginate($page_url_params);
         						</div>
 
                                 <?php if ($resource->media_collection): ?>
-                                    <p class="row-fluid">
+                                    <div class="row-fluid">
                                         <a href='<?php echo real_site_url($mm_plugin_slug); ?>/?filter=media_collection:"<?php echo $resource->media_collection; ?>"'>
                                             <?php echo $resource->media_collection ?>
                                         </a>
-                                    </p>
+                                    </div>
                                 <?php endif; ?>
+
+                                <p class="row-fluid">
+                                    <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
+                                    <?php echo format_date($resource->publication_date); ?>
+                                </p>
 
         						<p class="row-fluid">
         							<?php echo ( strlen($resource->description[0]) > 400 ? substr($resource->description[0],0,400) . '...' : $resource->description[0]); ?><br/>
