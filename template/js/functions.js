@@ -154,3 +154,11 @@ function show_related(url){
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
+
+function change_sort(obj){
+    var sort = obj.options[obj.selectedIndex].value;
+    var form = document.searchForm;
+
+    form.sort.value = sort;
+    $j("#searchForm").submit();
+}

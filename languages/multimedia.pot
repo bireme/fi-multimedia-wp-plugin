@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FI-Multimedia 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/fi-multimedia\n"
-"POT-Creation-Date: 2023-06-01 14:59-0300\n"
+"POT-Creation-Date: 2023-08-30 21:49-0300\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,25 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: fi-multimedia.php:88
+#: fi-multimedia.php:89
 msgid "Multimedia Settings"
 msgstr ""
 
-#: fi-multimedia.php:88
+#: fi-multimedia.php:89
 msgid "FI-Multimedia"
 msgstr ""
 
-#: fi-multimedia.php:136
+#: fi-multimedia.php:137
 msgid "Multimedia sidebar"
 msgstr ""
 
-#: fi-multimedia.php:162 fi-multimedia.php:179 template/home.php:67
-#: template/home.php:69 template/resource.php:50 template/rss.php:53
+#: fi-multimedia.php:163 fi-multimedia.php:180 template/home.php:70
+#: template/home.php:72 template/resource.php:50 template/rss.php:53
 msgid "Multimedia"
+msgstr ""
+
+#: fi-multimedia.php:220
+msgid "Settings"
 msgstr ""
 
 #: lib/Paginator.php:35 lib/Paginator.php:36 lib/Paginator.php:47
@@ -208,48 +212,64 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: template/home.php:65 template/resource.php:49
+#: template/home.php:68 template/resource.php:49
 msgid "Home"
 msgstr ""
 
-#: template/home.php:70
+#: template/home.php:73
 msgid "Search result"
 msgstr ""
 
-#: template/home.php:76
+#: template/home.php:79
 msgid "No results found"
 msgstr ""
 
-#: template/home.php:80
+#: template/home.php:83
 msgid "Resources found"
 msgstr ""
 
-#: template/home.php:82
+#: template/home.php:85
 msgid "Total of resources"
 msgstr ""
 
-#: template/home.php:106
+#: template/home.php:92
+msgid "Sort by"
+msgstr ""
+
+#: template/home.php:95
+msgid "Entry date"
+msgstr ""
+
+#: template/home.php:96
+msgid "Publication date"
+msgstr ""
+
+#: template/home.php:115 template/resource.php:67
+msgid "Date"
+msgstr ""
+
+#: template/home.php:121
 msgid "See more details"
 msgstr ""
 
-#: template/home.php:111
+#: template/home.php:126
 msgid "Available languages"
 msgstr ""
 
-#: template/home.php:146 template/home.php:147 template/resource.php:270
-#: template/resource.php:271
+#: template/home.php:161 template/home.php:163 template/resource.php:275
+#: template/resource.php:276
 msgid "Search"
 msgstr ""
 
-#: template/home.php:163 template/resource.php:72
+#: template/home.php:179 template/resource.php:77
 msgid "Collection"
 msgstr ""
 
-#: template/home.php:188
+#: template/home.php:204
 msgid "Subjects"
 msgstr ""
 
-#: template/home.php:213
+#: template/home.php:231
 msgid "Media type"
 msgstr ""
 
@@ -261,78 +281,78 @@ msgstr ""
 msgid "Resource"
 msgstr ""
 
-#: template/resource.php:87
+#: template/resource.php:92
 msgid "Author(s)"
 msgstr ""
 
-#: template/resource.php:94
+#: template/resource.php:99
 msgid "Contributor(s)"
 msgstr ""
 
-#: template/resource.php:101
+#: template/resource.php:106
 msgid "Objective"
 msgstr ""
 
-#: template/resource.php:108
+#: template/resource.php:113
 msgid "Language"
 msgstr ""
 
-#: template/resource.php:115
+#: template/resource.php:120
 msgid "Duration"
 msgstr ""
 
-#: template/resource.php:122
+#: template/resource.php:127
 msgid "Publisher"
 msgstr ""
 
-#: template/resource.php:130
+#: template/resource.php:135
 msgid "Subject(s)"
 msgstr ""
 
-#: template/resource.php:148
+#: template/resource.php:153
 msgid "Related Links"
 msgstr ""
 
-#: template/resource.php:164 template/resource.php:170
+#: template/resource.php:169 template/resource.php:175
 msgid "Share"
 msgstr ""
 
-#: template/resource.php:178
+#: template/resource.php:183
 msgid "Report error"
 msgstr ""
 
-#: template/resource.php:187
+#: template/resource.php:192
 msgid "Reason"
 msgstr ""
 
-#: template/resource.php:191
+#: template/resource.php:196
 msgid "Invalid Link"
 msgstr ""
 
-#: template/resource.php:196
+#: template/resource.php:201
 msgid "Bad content"
 msgstr ""
 
-#: template/resource.php:201
+#: template/resource.php:206
 msgid "Other"
 msgstr ""
 
-#: template/resource.php:209
+#: template/resource.php:214
 msgid "Send"
 msgstr ""
 
-#: template/resource.php:216
+#: template/resource.php:221
 msgid "Thank you for your report."
 msgstr ""
 
-#: template/resource.php:219
+#: template/resource.php:224
 msgid "Communication problem. Please try again later."
 msgstr ""
 
-#: template/resource.php:248
+#: template/resource.php:253
 msgid "More related"
 msgstr ""
 
-#: template/resource.php:278
+#: template/resource.php:283
 msgid "Related"
 msgstr ""

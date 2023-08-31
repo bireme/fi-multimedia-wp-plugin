@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FI-Multimedia 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/fi-multimedia\n"
-"POT-Creation-Date: 2023-06-01 14:54-0300\n"
-"PO-Revision-Date: 2023-06-01 14:57-0300\n"
+"POT-Creation-Date: 2023-08-30 21:49-0300\n"
+"PO-Revision-Date: 2023-08-30 21:58-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -17,22 +17,26 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: fi-multimedia.php:88
+#: fi-multimedia.php:89
 msgid "Multimedia Settings"
 msgstr "Multimedia Ajustes"
 
-#: fi-multimedia.php:88
+#: fi-multimedia.php:89
 msgid "FI-Multimedia"
 msgstr "FI-Multimedia"
 
-#: fi-multimedia.php:136
+#: fi-multimedia.php:137
 msgid "Multimedia sidebar"
 msgstr "Multimedia area de destacados"
 
-#: fi-multimedia.php:162 fi-multimedia.php:179 template/home.php:67
-#: template/home.php:69 template/resource.php:50 template/rss.php:53
+#: fi-multimedia.php:163 fi-multimedia.php:180 template/home.php:70
+#: template/home.php:72 template/resource.php:50 template/rss.php:53
 msgid "Multimedia"
 msgstr "Multimedia"
+
+#: fi-multimedia.php:220
+msgid "Settings"
+msgstr "Configuración"
 
 #: lib/Paginator.php:35 lib/Paginator.php:36 lib/Paginator.php:47
 #: lib/Paginator.php:53 lib/Paginator.php:62 lib/Paginator.php:63
@@ -182,15 +186,15 @@ msgstr "Codigo del Google Analytics"
 
 #: settings.php:74
 msgid "Related Documents filter"
-msgstr ""
+msgstr "Filtro de Documentos Relacionados"
 
 #: settings.php:77 settings.php:84
 msgid "The filters must be separated by commas."
-msgstr ""
+msgstr "Los filtros deben estar separados por comas."
 
 #: settings.php:81
 msgid "More Related Documents filter"
-msgstr ""
+msgstr "Filtro de Más Documentos Relacionados"
 
 #: settings.php:88
 msgid "Sidebar order"
@@ -208,48 +212,64 @@ msgstr "Seleccionado"
 msgid "Save Changes"
 msgstr "Guardar Cambios"
 
-#: template/home.php:65 template/resource.php:49
+#: template/home.php:68 template/resource.php:49
 msgid "Home"
 msgstr "Inicio"
 
-#: template/home.php:70
+#: template/home.php:73
 msgid "Search result"
 msgstr "Resultado de la búsqueda"
 
-#: template/home.php:76
+#: template/home.php:79
 msgid "No results found"
 msgstr "No se encontraron resultados"
 
-#: template/home.php:80
+#: template/home.php:83
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/home.php:82
+#: template/home.php:85
 msgid "Total of resources"
 msgstr "Total de recursos"
 
-#: template/home.php:106
+#: template/home.php:92
+msgid "Sort by"
+msgstr "Ordenar por"
+
+#: template/home.php:95
+msgid "Entry date"
+msgstr "Fecha de entrada"
+
+#: template/home.php:96
+msgid "Publication date"
+msgstr "Fecha de publicación"
+
+#: template/home.php:115 template/resource.php:67
+msgid "Date"
+msgstr "Fecha"
+
+#: template/home.php:121
 msgid "See more details"
 msgstr "Ver más detalles"
 
-#: template/home.php:111
+#: template/home.php:126
 msgid "Available languages"
 msgstr "Idiomas disponibles"
 
-#: template/home.php:146 template/home.php:147 template/resource.php:270
-#: template/resource.php:271
+#: template/home.php:161 template/home.php:163 template/resource.php:275
+#: template/resource.php:276
 msgid "Search"
 msgstr "Buscar"
 
-#: template/home.php:163 template/resource.php:72
+#: template/home.php:179 template/resource.php:77
 msgid "Collection"
 msgstr "Colección"
 
-#: template/home.php:188
+#: template/home.php:204
 msgid "Subjects"
 msgstr "Asuntos"
 
-#: template/home.php:213
+#: template/home.php:231
 msgid "Media type"
 msgstr "Tipo de medio"
 
@@ -261,79 +281,79 @@ msgstr "No se encontraron documentos relacionados"
 msgid "Resource"
 msgstr "Recurso"
 
-#: template/resource.php:87
+#: template/resource.php:92
 msgid "Author(s)"
 msgstr "Autor(es)"
 
-#: template/resource.php:94
+#: template/resource.php:99
 msgid "Contributor(s)"
 msgstr "Contribuidor(es)"
 
-#: template/resource.php:101
+#: template/resource.php:106
 msgid "Objective"
 msgstr "Objetivo"
 
-#: template/resource.php:108
+#: template/resource.php:113
 msgid "Language"
 msgstr "Idioma"
 
-#: template/resource.php:115
+#: template/resource.php:120
 msgid "Duration"
 msgstr "Duración"
 
-#: template/resource.php:122
+#: template/resource.php:127
 msgid "Publisher"
-msgstr ""
+msgstr "Editor"
 
-#: template/resource.php:130
+#: template/resource.php:135
 msgid "Subject(s)"
 msgstr "Asunto(s)"
 
-#: template/resource.php:148
+#: template/resource.php:153
 msgid "Related Links"
 msgstr "Enlaces Relacionados"
 
-#: template/resource.php:164 template/resource.php:170
+#: template/resource.php:169 template/resource.php:175
 msgid "Share"
 msgstr "Compartir"
 
-#: template/resource.php:178
+#: template/resource.php:183
 msgid "Report error"
 msgstr "Informar un error"
 
-#: template/resource.php:187
+#: template/resource.php:192
 msgid "Reason"
 msgstr "Motivo"
 
-#: template/resource.php:191
+#: template/resource.php:196
 msgid "Invalid Link"
 msgstr "Link no es válido"
 
-#: template/resource.php:196
+#: template/resource.php:201
 msgid "Bad content"
 msgstr "Contenido inapropiado"
 
-#: template/resource.php:201
+#: template/resource.php:206
 msgid "Other"
 msgstr "Otro"
 
-#: template/resource.php:209
+#: template/resource.php:214
 msgid "Send"
 msgstr "Enviar"
 
-#: template/resource.php:216
+#: template/resource.php:221
 msgid "Thank you for your report."
 msgstr "Gracias por indicar el error."
 
-#: template/resource.php:219
+#: template/resource.php:224
 msgid "Communication problem. Please try again later."
 msgstr "Problema de Comunicación. Por favor inténte más tarde."
 
-#: template/resource.php:248
+#: template/resource.php:253
 msgid "More related"
 msgstr "Más Relacionados"
 
-#: template/resource.php:278
+#: template/resource.php:283
 msgid "Related"
 msgstr "Relacionados"
 

@@ -23,6 +23,9 @@ $total = 0;
 $count = 10;
 $filter = '';
 
+$sort_options = array('creation_date desc', 'publication_date desc');
+$sort = ( isset($_GET['sort']) && in_array($_GET['sort'], $sort_options) ) ? $_GET['sort'] : 'created_date desc';
+
 if ($mm_initial_filter != ''){
     if ($user_filter != ''){
         $filter = $mm_initial_filter . ' AND ' . $user_filter;
@@ -34,9 +37,9 @@ if ($mm_initial_filter != ''){
 }
 $start = ($page * $count) - $count;
 
-$mm_service_request = $mm_service_url . 'api/multimedia/search/?q=' . urlencode($query) . '&fq=' .urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
+$mm_service_request = $mm_service_url . 'api/multimedia/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir . '&sort=' . urlencode($sort);
 
-//print $mm_service_request;
+// echo "<pre>"; print_r($mm_service_request); echo "</pre>"; die();
 
 $response = @file_get_contents($mm_service_request);
 if ($response){
@@ -59,8 +62,8 @@ $pages->paginate($page_url_params);
 ?>
 
 <?php get_header('multimedia');?>
-	<div id="content" class="row-fluid">
-		<div class="ajusta2">
+    <div id="content" class="row-fluid">
+        <div class="ajusta2">
             <div class="row-fluid breadcrumb">
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','multimedia'); ?></a> >
                 <?php if ($query == '' && $filter == ''): ?>
@@ -71,27 +74,34 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </div>
 
-			<section id="conteudo">
+            <section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
                     <h1 class="h1-header"><?php _e('No results found','multimedia'); ?></h1>
                 <?php else :?>
-    				<header class="row-fluid border-bottom">
+                    <header class="row-fluid border-bottom">
                         <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0) :?>
-    					   <h1 class="h1-header"><?php _e('Resources found','multimedia'); ?>: <?php echo $total; ?></h1>
+                           <h1 class="h1-header"><?php _e('Resources found','multimedia'); ?>: <?php echo $total; ?></h1>
                         <?php else: ?>
                            <h1 class="h1-header"><?php _e('Total of resources','multimedia'); echo ': ' . $total; ?></h1>
                         <?php endif; ?>
                         <div class="pull-right">
                             <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" /></a>
                         </div>
-
-    				</header>
-    				<div class="row-fluid">
+                    </header>
+                    <div class="search-form">
+                        <label for="sortBy"><?php _e('Sort by','multimedia'); ?>:</label>
+                        <select name="sortBy" id="sortBy" class="selectOrder margintop15" onchange="if (this.value) javascript:change_sort(this);">
+                            <option value="">-</option>
+                            <option value="created_date desc" <?php echo ( 'created_date desc' == $sort ) ? 'selected' : ''; ?>><?php _e('Entry date','multimedia'); ?></option>
+                            <option value="publication_date desc" <?php echo ( 'publication_date desc' == $sort ) ? 'selected' : ''; ?>><?php _e('Publication date','multimedia'); ?></option>
+                        </select>
+                    </div>
+                    <div class="row-fluid">
                         <?php foreach ( $resource_list as $resource) { ?>
-    					    <article class="conteudo-loop">
-        						<div class="row-fluid">
-        							<h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
-        						</div>
+                            <article class="conteudo-loop">
+                                <div class="row-fluid">
+                                    <h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
+                                </div>
 
                                 <?php if ($resource->media_collection): ?>
                                     <div class="row-fluid">
@@ -106,16 +116,16 @@ $pages->paginate($page_url_params);
                                     <?php echo format_date($resource->publication_date); ?>
                                 </p>
 
-        						<p class="row-fluid">
-        							<?php echo ( strlen($resource->description[0]) > 400 ? substr($resource->description[0],0,400) . '...' : $resource->description[0]); ?><br/>
-        							<span class="more"><a href="<?php echo real_site_url($mm_plugin_slug); ?>resource/?id=<?php echo $resource->id; ?>"><?php _e('See more details','multimedia'); ?></a></span>
-        						</p>
+                                <p class="row-fluid">
+                                    <?php echo ( strlen($resource->description[0]) > 400 ? substr($resource->description[0],0,400) . '...' : $resource->description[0]); ?><br/>
+                                    <span class="more"><a href="<?php echo real_site_url($mm_plugin_slug); ?>resource/?id=<?php echo $resource->id; ?>"><?php _e('See more details','multimedia'); ?></a></span>
+                                </p>
 
                                 <?php if ($resource->source_language_display): ?>
-            						<div id="conteudo-loop-idiomas" class="row-fluid">
-            							<span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','multimedia'); ?>:</span>
-            							<?php multimedia_print_lang_value($resource->source_language_display, $site_language); ?>
-            						</div>
+                                    <div id="conteudo-loop-idiomas" class="row-fluid">
+                                        <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','multimedia'); ?>:</span>
+                                        <?php multimedia_print_lang_value($resource->source_language_display, $site_language); ?>
+                                    </div>
                                 <?php endif; ?>
 
                                 <?php if ($resource->descriptor || $resource->keyword ) : ?>
@@ -136,23 +146,24 @@ $pages->paginate($page_url_params);
                                 <?php endif; ?>
 
 
-        					</article>
+                            </article>
                         <?php } ?>
-    				</div>
+                    </div>
                     <div class="row-fluid">
                         <?php echo $pages->display_pages(); ?>
                     </div>
                 <?php endif; ?>
-			</section>
-			<aside id="sidebar">
-			       <section class="header-search">
-                    		<?php if ($mm_config['show_form']) : ?>
-                        		<form role="search" method="get" id="searchform" action="<?php echo real_site_url($mm_plugin_slug); ?>">
-                            			<input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'multimedia'); ?>...">
-                            			<input id="searchsubmit" value="<?php _e('Search', 'multimedia'); ?>" type="submit">
-                        		</form>
-                    		<?php endif; ?>
-                	</section>
+            </section>
+            <aside id="sidebar">
+                   <section class="header-search">
+                        <?php if ($mm_config['show_form']) : ?>
+                            <form role="search" method="get" name="searchForm" id="searchForm" action="<?php echo real_site_url($mm_plugin_slug); ?>">
+                                <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'multimedia'); ?>...">
+                                <input type="hidden" name="sort" id="sort" value="<?php echo $sort; ?>">
+                                <input id="searchsubmit" value="<?php _e('Search', 'multimedia'); ?>" type="submit">
+                            </form>
+                        <?php endif; ?>
+                    </section>
 
                     <?php dynamic_sidebar('multimedia-home');?>
 
@@ -241,8 +252,8 @@ $pages->paginate($page_url_params);
                             <?php } ?>
                         <?php   } ?>
                     <?php endif; ?>
-			</aside>
-			<div class="spacer"></div>
-		</div>
-	</div>
+            </aside>
+            <div class="spacer"></div>
+        </div>
+    </div>
 <?php get_footer();?>
