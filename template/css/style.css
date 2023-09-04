@@ -325,6 +325,18 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
     margin-right: 10px;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.show-more {
+    clear: both;
+}
+
+.loading {
+    display: none;
+}
+
 /* Loader */
 .loader {
     border: 2px solid #f3f3f3; /* Light grey */
@@ -335,6 +347,7 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
     animation: spin 2s linear infinite;
     margin: 20px;
 }
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

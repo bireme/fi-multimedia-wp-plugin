@@ -44,7 +44,7 @@ $mm_service_request = $mm_service_url . 'api/multimedia/search/?q=' . urlencode(
 $response = @file_get_contents($mm_service_request);
 if ($response){
     $response_json = json_decode($response);
-    //var_dump($response_json);
+    // echo "<pre>"; print_r($response_json); echo "</pre>"; die();
     $total = $response_json->diaServerResponse[0]->response->numFound;
     $start = $response_json->diaServerResponse[0]->response->start;
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
@@ -173,29 +173,35 @@ $pages->paginate($page_url_params);
                             $order = explode(';', $mm_config['available_filter']);
                             foreach ( $order as $index => $content) { ?>
 
-                            <?php  if($content == 'Collection'){ ?>
+                            <?php if($content == 'Collection'){ ?>
                                 <section class="row-fluid marginbottom25 widget_categories">
                                     <header class="row-fluid border-bottom marginbottom15">
                                         <h1 class="h1-header"><?php _e('Collection','multimedia'); ?></h1>
                                     </header>
-                                    <ul>
-                                        <?php foreach ( $collection_filter as $collection) { ?>
-                                            <?php
-                                                $filter_link = '?';
-                                                if ($query != ''){
-                                                    $filter_link .= 'q=' . $query . '&';
-                                                }
-                                                $filter_link .= 'filter=media_collection_filter:"' . $collection[0] . '"';
-                                                if ($user_filter != ''){
-                                                    $filter_link .= ' AND ' . $user_filter ;
-                                                }
-                                            ?>
-                                            <li class="cat-item">
-                                                <a href='<?php echo $filter_link; ?>'><?php echo $collection[0]; ?></a>
-                                                <span class="cat-item-count"><?php echo $collection[1] ?></span>
-                                            </li>
-                                        <?php } ?>
+                                    <ul class="filter-list">
+                                    <?php foreach ( $collection_filter as $collection) { ?>
+                                        <?php
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=media_collection_filter:"' . $collection[0] . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
+                                        <li class="cat-item">
+                                            <a href='<?php echo $filter_link; ?>'><?php echo $collection[0]; ?></a>
+                                            <span class="cat-item-count"><?php echo $collection[1] ?></span>
+                                        </li>
+                                    <?php } ?>
                                     </ul>
+                                    <?php if ( count($collection_filter) == 20 ) : ?>
+                                    <div class="show-more text-center">
+                                        <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="media_collection_filter"><?php _e('show more','multimedia'); ?></a>
+                                        <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
+                                    </div>
+                                    <?php endif; ?>
                                 </section>
                             <?php  }  ?>
                             <?php if($content == 'Subjects'){ ?>
@@ -203,7 +209,7 @@ $pages->paginate($page_url_params);
                                     <header class="row-fluid border-bottom marginbottom15">
                                         <h1 class="h1-header"><?php _e('Subjects','multimedia'); ?></h1>
                                     </header>
-                                    <ul>
+                                    <ul class="filter-list">
                                     <?php foreach ( $descriptor_list as $descriptor) { ?>
                                         <?php
                                             $filter_link = '?';
@@ -222,7 +228,13 @@ $pages->paginate($page_url_params);
                                             </li>
                                         <?php endif; ?>
                                     <?php } ?>
-                                  </ul>
+                                    </ul>
+                                    <?php if ( count($descriptor_list) == 20 ) : ?>
+                                    <div class="show-more text-center">
+                                        <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="descriptor"><?php _e('show more','multimedia'); ?></a>
+                                        <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
+                                    </div>
+                                    <?php endif; ?>
                               </section>
                             <?php } ?>
                             <?php if($content == 'Media type'){ ?>
@@ -230,7 +242,7 @@ $pages->paginate($page_url_params);
                                     <header class="row-fluid border-bottom marginbottom15">
                                         <h1 class="h1-header"><?php _e('Media type','multimedia'); ?></h1>
                                     </header>
-                                    <ul>
+                                    <ul class="filter-list">
                                     <?php foreach ( $media_type_filter as $type) { ?>
                                         <?php
                                             $filter_link = '?';
@@ -248,6 +260,12 @@ $pages->paginate($page_url_params);
                                         </li>
                                     <?php } ?>
                                     </ul>
+                                    <?php if ( count($descriptor_list) == 20 ) : ?>
+                                    <div class="show-more text-center">
+                                        <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="media_type_filter"><?php _e('show more','multimedia'); ?></a>
+                                        <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
+                                    </div>
+                                    <?php endif; ?>
                                  </section>
                             <?php } ?>
                         <?php   } ?>
@@ -256,4 +274,51 @@ $pages->paginate($page_url_params);
             <div class="spacer"></div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $(document).on( "click", ".btn-ajax", function(e) {
+                e.preventDefault();
+
+                var _this = $(this);
+                var fb = $(this).data('fb');
+                var cluster = $(this).data('cluster');
+
+                $(this).hide();
+                $(this).next('.loading').show();
+
+                $.ajax({ 
+                    type: "POST",
+                    url: mm_script_vars.ajaxurl,
+                    data: {
+                        action: 'show_more_clusters',
+                        lang: '<?php echo $lang_dir; ?>',
+                        site_lang: '<?php echo $site_language; ?>',
+                        query: '<?php echo $query; ?>',
+                        filter: '<?php echo $filter; ?>',
+                        uf: '<?php echo $user_filter; ?>',
+                        cluster: cluster,
+                        fb: fb
+                    },
+                    success: function(response){
+                        var html = $.parseHTML( response );
+                        _this.parent().siblings('.filter-list').replaceWith( response );
+                        _this.data('fb', fb+10);
+                        _this.next('.loading').hide();
+
+                        var len = $(html).find(".cat-item").length;
+                        var mod = parseInt(len % 10);
+
+                        if ( mod ) {
+                            _this.remove();
+                        } else {
+                            _this.show();
+                        }
+                    },
+                    error: function(error){ console.log(error) }
+                });
+            });
+        });
+    </script>
+
 <?php get_footer();?>

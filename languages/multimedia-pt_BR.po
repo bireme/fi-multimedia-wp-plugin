@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FI-Multimedia 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/fi-multimedia\n"
-"POT-Creation-Date: 2023-08-30 21:55-0300\n"
-"PO-Revision-Date: 2023-08-30 21:57-0300\n"
+"POT-Creation-Date: 2023-09-04 20:51-0300\n"
+"PO-Revision-Date: 2023-09-04 20:52-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -17,24 +17,24 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: fi-multimedia.php:89
+#: fi-multimedia.php:91
 msgid "Multimedia Settings"
 msgstr "FI Multimídia Ajustes"
 
-#: fi-multimedia.php:89
+#: fi-multimedia.php:91
 msgid "FI-Multimedia"
 msgstr "FI-Multimídia"
 
-#: fi-multimedia.php:137
+#: fi-multimedia.php:139
 msgid "Multimedia sidebar"
 msgstr "Multimídia área de destaques"
 
-#: fi-multimedia.php:163 fi-multimedia.php:180 template/home.php:70
+#: fi-multimedia.php:165 fi-multimedia.php:182 template/home.php:70
 #: template/home.php:72 template/resource.php:50 template/rss.php:53
 msgid "Multimedia"
 msgstr "Multimídia"
 
-#: fi-multimedia.php:220
+#: fi-multimedia.php:229
 msgid "Settings"
 msgstr "Configurações"
 
@@ -265,11 +265,19 @@ msgstr "Pesquisa"
 msgid "Collection"
 msgstr "Coleção"
 
-#: template/home.php:204
+#: template/home.php:201 template/home.php:234 template/home.php:265
+msgid "show more"
+msgstr "mostrar mais"
+
+#: template/home.php:202 template/home.php:235 template/home.php:266
+msgid "loading"
+msgstr "carregando"
+
+#: template/home.php:210
 msgid "Subjects"
 msgstr "Assuntos"
 
-#: template/home.php:231
+#: template/home.php:243
 msgid "Media type"
 msgstr "Tipo de mídia"
 
