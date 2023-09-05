@@ -215,7 +215,6 @@ if(!class_exists('FI_Multimedia_Plugin')) {
                     'ajaxnonce' => wp_create_nonce( 'ajax_post_validation' )
                 )
             );
-
         }
 
         function register_settings(){
@@ -264,7 +263,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
         }
 
         function show_more_clusters() {
-            global $mm_service_url, $mm_plugin_slug;
+            global $mm_service_url;
             $mm_service_url = $this->service_url;
 
             ob_start();
