@@ -52,8 +52,8 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             add_filter( 'document_title_separator', array(&$this, 'title_tag_sep') );
             add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
             add_filter( 'wp_title', array(&$this, 'theme_slug_render_wp_title'));
-            add_action( 'wp_ajax_show_more_clusters', array($this, 'show_more_clusters'));
-            add_action( 'wp_ajax_nopriv_show_more_clusters', array($this, 'show_more_clusters'));
+            add_action( 'wp_ajax_mm_show_more_clusters', array($this, 'mm_show_more_clusters'));
+            add_action( 'wp_ajax_nopriv_mm_show_more_clusters', array($this, 'mm_show_more_clusters'));
 
         } // END public function __construct
 
@@ -262,7 +262,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             wp_enqueue_style ('multimedia',  PLUGIN_URL . 'template/css/admin.css');
         }
 
-        function show_more_clusters() {
+        function mm_show_more_clusters() {
             global $mm_service_url;
             $mm_service_url = $this->service_url;
 

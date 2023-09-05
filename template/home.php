@@ -291,7 +291,7 @@ $pages->paginate($page_url_params);
                     type: "POST",
                     url: mm_script_vars.ajaxurl,
                     data: {
-                        action: 'show_more_clusters',
+                        action: 'mm_show_more_clusters',
                         lang: '<?php echo $lang_dir; ?>',
                         site_lang: '<?php echo $site_language; ?>',
                         query: '<?php echo $query; ?>',
