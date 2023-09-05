@@ -49,7 +49,7 @@ if ($response){
         <?php } ?>
     </ul>
 <?php  }  ?>
-<?php if($cluster == 'descriptor'){ ?>
+<?php if($cluster == 'descriptor_filter'){ ?>
     <ul class="filter-list">
     <?php foreach ( $descriptor_list as $descriptor) { ?>
         <?php

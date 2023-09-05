@@ -231,7 +231,7 @@ $pages->paginate($page_url_params);
                                     </ul>
                                     <?php if ( count($descriptor_list) == 20 ) : ?>
                                     <div class="show-more text-center">
-                                        <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="descriptor"><?php _e('show more','multimedia'); ?></a>
+                                        <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="descriptor_filter"><?php _e('show more','multimedia'); ?></a>
                                         <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
                                     </div>
                                     <?php endif; ?>
@@ -260,7 +260,7 @@ $pages->paginate($page_url_params);
                                         </li>
                                     <?php } ?>
                                     </ul>
-                                    <?php if ( count($descriptor_list) == 20 ) : ?>
+                                    <?php if ( count($media_type_filter) == 20 ) : ?>
                                     <div class="show-more text-center">
                                         <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="media_type_filter"><?php _e('show more','multimedia'); ?></a>
                                         <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
