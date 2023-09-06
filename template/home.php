@@ -92,8 +92,8 @@ $pages->paginate($page_url_params);
                         <label for="sortBy"><?php _e('Sort by','multimedia'); ?>:</label>
                         <select name="sortBy" id="sortBy" class="selectOrder margintop15" onchange="if (this.value) javascript:change_sort(this);">
                             <option value="">-</option>
-                            <option value="created_date desc" <?php echo ( 'created_date desc' == $sort ) ? 'selected' : ''; ?>><?php _e('Entry date','multimedia'); ?></option>
-                            <option value="publication_date desc" <?php echo ( 'publication_date desc' == $sort ) ? 'selected' : ''; ?>><?php _e('Publication date','multimedia'); ?></option>
+                            <option value="created_date desc" <?php echo ( $_GET['sort'] && 'created_date desc' == $_GET['sort'] ) ? 'selected' : ''; ?>><?php _e('Entry date','multimedia'); ?></option>
+                            <option value="publication_date desc" <?php echo ( $_GET['sort'] && 'publication_date desc' == $_GET['sort'] ) ? 'selected' : ''; ?>><?php _e('Publication date','multimedia'); ?></option>
                         </select>
                     </div>
                     <div class="row-fluid">
