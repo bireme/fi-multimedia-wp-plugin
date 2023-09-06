@@ -29,65 +29,71 @@ if ($response){
 
 ?>
 
-<?php if($cluster == 'media_collection_filter'){ ?>
-    <ul class="filter-list">
-        <?php foreach ( $collection_filter as $collection) { ?>
-            <?php
-                $filter_link = '?';
-                if ($query != ''){
-                    $filter_link .= 'q=' . $query . '&';
-                }
-                $filter_link .= 'filter=media_collection_filter:"' . $collection[0] . '"';
-                if ($user_filter != ''){
-                    $filter_link .= ' AND ' . $user_filter ;
-                }
-            ?>
-            <li class="cat-item">
-                <a href='<?php echo $filter_link; ?>'><?php echo $collection[0]; ?></a>
-                <span class="cat-item-count"><?php echo $collection[1] ?></span>
-            </li>
-        <?php } ?>
-    </ul>
-<?php  }  ?>
-<?php if($cluster == 'descriptor_filter'){ ?>
-    <ul class="filter-list">
-    <?php foreach ( $descriptor_list as $descriptor) { ?>
-        <?php
-            $filter_link = '?';
-            if ($query != ''){
-                $filter_link .= 'q=' . $query . '&';
-            }
-            $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
-            if ($user_filter != ''){
-                $filter_link .= ' AND ' . $user_filter ;
-            }
-        ?>
-        <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
-            <li class="cat-item">
-                <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
-                <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-            </li>
-        <?php endif; ?>
-    <?php } ?>
-    </ul>
-<?php } ?>
-<?php if($cluster == 'media_type_filter'){ ?>
-    <ul class="filter-list">
-    <?php foreach ( $media_type_filter as $type) { ?>
-        <?php
-            $filter_link = '?';
-            if ($query != ''){
-                $filter_link .= 'q=' . $query . '&';
-            }
-            $filter_link .= 'filter=media_type_filter:"' . $type[0] . '"';
-            if ($user_filter != ''){
-                $filter_link .= ' AND ' . $user_filter ;
-            }
-        ?>
-        <li class="cat-item">
-            <a href='<?php echo $filter_link; ?>'><?php multimedia_print_lang_value($type[0], $site_lang); ?></a>
-            <span class="cat-item-count"><?php echo $type[1] ?></span>
-        </li>
-    <?php } ?>
-    </ul>
-<?php } ?>
+<?php if($cluster == 'media_collection_filter'): ?>
+    <?php if($collection_filter): ?>
+        <ul class="filter-list">
+            <?php foreach ( $collection_filter as $collection ) : ?>
+                <?php
+                    $filter_link = '?';
+                    if ($query != ''){
+                        $filter_link .= 'q=' . $query . '&';
+                    }
+                    $filter_link .= 'filter=media_collection_filter:"' . $collection[0] . '"';
+                    if ($user_filter != ''){
+                        $filter_link .= ' AND ' . $user_filter ;
+                    }
+                ?>
+                <li class="cat-item">
+                    <a href='<?php echo $filter_link; ?>'><?php echo $collection[0]; ?></a>
+                    <span class="cat-item-count"><?php echo $collection[1] ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+<?php endif; ?>
+<?php if($cluster == 'descriptor_filter'): ?>
+    <?php if($descriptor_list): ?>
+        <ul class="filter-list">
+            <?php foreach ( $descriptor_list as $descriptor ) : ?>
+                <?php
+                    $filter_link = '?';
+                    if ($query != ''){
+                        $filter_link .= 'q=' . $query . '&';
+                    }
+                    $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                    if ($user_filter != ''){
+                        $filter_link .= ' AND ' . $user_filter ;
+                    }
+                ?>
+                <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
+                    <li class="cat-item">
+                        <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
+                        <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+<?php endif; ?>
+<?php if($cluster == 'media_type_filter'): ?>
+    <?php if($media_type_filter): ?>
+        <ul class="filter-list">
+            <?php foreach ( $media_type_filter as $type ) : ?>
+                <?php
+                    $filter_link = '?';
+                    if ($query != ''){
+                        $filter_link .= 'q=' . $query . '&';
+                    }
+                    $filter_link .= 'filter=media_type_filter:"' . $type[0] . '"';
+                    if ($user_filter != ''){
+                        $filter_link .= ' AND ' . $user_filter ;
+                    }
+                ?>
+                <li class="cat-item">
+                    <a href='<?php echo $filter_link; ?>'><?php multimedia_print_lang_value($type[0], $site_lang); ?></a>
+                    <span class="cat-item-count"><?php echo $type[1] ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+<?php endif; ?>
