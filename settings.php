@@ -87,9 +87,10 @@ function multimedia_page_admin() {
                     <tr valign="top">
                         <th scope="row"><?php _e('Sidebar order', 'multimedia');?>:</th>
                         <?php
-                            if ( !isset($config['available_filter']) ) {
-                                $config['available_filter'] = 'Collection;Subjects;Media type';
-                                $order = explode(';', $config['available_filter'] );
+                            $available_filters = 'Collection;Subjects;Media type;Thematic area';
+                            $available_filter_list = explode(';', $available_filters);
+                            if(!isset($config['available_filter'])){
+                                $order = $available_filter_list;
                             } else {
                                 $order = array_filter(explode(';', $config['available_filter']));
                             }
@@ -97,34 +98,28 @@ function multimedia_page_admin() {
                         <td>
                             <table border=0>
                                 <tr>
-                                    <td >
-                                        <p align="right"><?php _e('Available', 'multimedia');?><br>
+                                    <td>
+                                        <p align="left"><?php _e('Available', 'multimedia');?><br>
                                             <ul id="sortable1" class="droptrue">
-                                            <?php
-                                                if ( !in_array('Collection', $order) && !in_array('Collection ', $order) ) {
-                                                	 echo '<li class="ui-state-default" id="Collection">'.translate('Collection','multimedia').'</li>';
-                                                }
-                                                if ( !in_array('Subjects', $order) && !in_array('Subjects ', $order) ) {
-                                                	 echo '<li class="ui-state-default" id="Subjects">'.translate('Subjects','multimedia').'</li>';
-                                                }
-                                                if ( !in_array('Media type', $order) && !in_array('Media type ', $order) ) {
-                                                	 echo '<li class="ui-state-default" id="Media type">'.translate('Media type','multimedia').'</li>';
-                                                }
-                                            ?>
+                                                <?php foreach ($available_filter_list as $key => $value) : ?>
+                                                    <?php if ( !in_array($value, $order) ) : ?>
+                                                        <?php echo '<li class="ui-state-default" id="'.$value.'">'.translate($value,'multimedia').'</li>'; ?>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
                                             </ul>
                                         </p>
                                     </td>
-                                    <td >
+                                    <td>
                                         <p align="left"><?php _e('Selected', 'multimedia');?> <br>
                                             <ul id="sortable2" class="sortable-list">
-                                            <?php
-                                                foreach ( $order as $index => $item ) {
-                                                    $item = trim($item);
-                                                    echo '<li class="ui-state-default" id="'.$item.'">'.translate($item ,'multimedia').'</li>';
-                                                }
-                                            ?>
+                                                <?php
+                                                    foreach ($order as $index => $item) {
+                                                        $item = trim($item);
+                                                        echo '<li class="ui-state-default" id="'.$item.'">'.translate($item ,'multimedia').'</li>';
+                                                    }
+                                                ?>
                                             </ul>
-                                            <input type="hidden" id="order_aux" name="multimedia_config[available_filter]" value="<?php echo trim($config['available_filter']); ?>" >
+                                            <input type="hidden" id="order_aux" name="multimedia_config[available_filter]" value="<?php echo trim($config['available_filter']); ?> " >
                                         </p>
                                     </td>
                                 </tr>

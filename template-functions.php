@@ -34,6 +34,7 @@ if ( !function_exists('multimedia_get_lang_value') ) {
             $translated = $lang_value[$default_lang_code];
         } else {
             $translated = ltrim(strstr($string, '^'), '^');
+            if ( !$translated ) $translated = $string;
         }
 
         return $translated;

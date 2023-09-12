@@ -25,6 +25,7 @@ if ($response){
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
     $collection_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_collection_filter;
     $media_type_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_type_filter;
+    $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
 }
 
 ?>
@@ -51,6 +52,7 @@ if ($response){
         </ul>
     <?php endif; ?>
 <?php endif; ?>
+
 <?php if($cluster == 'descriptor_filter'): ?>
     <?php if($descriptor_list): ?>
         <ul class="filter-list">
@@ -75,6 +77,7 @@ if ($response){
         </ul>
     <?php endif; ?>
 <?php endif; ?>
+
 <?php if($cluster == 'media_type_filter'): ?>
     <?php if($media_type_filter): ?>
         <ul class="filter-list">
@@ -92,6 +95,29 @@ if ($response){
                 <li class="cat-item">
                     <a href='<?php echo $filter_link; ?>'><?php multimedia_print_lang_value($type[0], $site_lang); ?></a>
                     <span class="cat-item-count"><?php echo $type[1] ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if($cluster == 'thematic_area_display'): ?>
+    <?php if($thematic_area_list): ?>
+        <ul class="filter-list">
+            <?php foreach ( $thematic_area_list as $ta ) : ?>
+                <?php
+                    $filter_link = '?';
+                    if ($query != ''){
+                        $filter_link .= 'q=' . $query . '&';
+                    }
+                    $filter_link .= 'filter=thematic_area_display:"' . $ta[0] . '"';
+                    if ($user_filter != ''){
+                        $filter_link .= ' AND ' . $user_filter ;
+                    }
+                ?>
+                <li class="cat-item">
+                    <a href='<?php echo $filter_link; ?>'><?php multimedia_print_lang_value($ta[0], $site_lang); ?></a>
+                    <span class="cat-item-count"><?php echo $ta[1] ?></span>
                 </li>
             <?php endforeach; ?>
         </ul>

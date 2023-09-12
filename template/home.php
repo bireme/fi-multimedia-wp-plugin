@@ -51,6 +51,7 @@ if ($response){
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
     $collection_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_collection_filter;
     $media_type_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_type_filter;
+    $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
 }
 
 $page_url_params = real_site_url($mm_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
@@ -155,121 +156,153 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </section>
             <aside id="sidebar">
-                   <section class="header-search">
-                        <?php if ($mm_config['show_form']) : ?>
-                            <form role="search" method="get" name="searchForm" id="searchForm" action="<?php echo real_site_url($mm_plugin_slug); ?>">
-                                <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'multimedia'); ?>...">
-                                <input type="hidden" name="sort" id="sort" value="<?php echo $sort; ?>">
-                                <input id="searchsubmit" value="<?php _e('Search', 'multimedia'); ?>" type="submit">
-                            </form>
-                        <?php endif; ?>
-                    </section>
-
-                    <?php dynamic_sidebar('multimedia-home');?>
-
-                    <?php if (strval($total) > 0) :?>
-
-                      <?php
-                            $order = explode(';', $mm_config['available_filter']);
-                            foreach ( $order as $index => $content) { ?>
-
-                            <?php if($content == 'Collection'){ ?>
-                                <section class="row-fluid marginbottom25 widget_categories">
-                                    <header class="row-fluid border-bottom marginbottom15">
-                                        <h1 class="h1-header"><?php _e('Collection','multimedia'); ?></h1>
-                                    </header>
-                                    <ul class="filter-list">
-                                    <?php foreach ( $collection_filter as $collection) { ?>
-                                        <?php
-                                            $filter_link = '?';
-                                            if ($query != ''){
-                                                $filter_link .= 'q=' . $query . '&';
-                                            }
-                                            $filter_link .= 'filter=media_collection_filter:"' . $collection[0] . '"';
-                                            if ($user_filter != ''){
-                                                $filter_link .= ' AND ' . $user_filter ;
-                                            }
-                                        ?>
-                                        <li class="cat-item">
-                                            <a href='<?php echo $filter_link; ?>'><?php echo $collection[0]; ?></a>
-                                            <span class="cat-item-count"><?php echo $collection[1] ?></span>
-                                        </li>
-                                    <?php } ?>
-                                    </ul>
-                                    <?php if ( count($collection_filter) == 20 ) : ?>
-                                    <div class="show-more text-center">
-                                        <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="media_collection_filter"><?php _e('show more','multimedia'); ?></a>
-                                        <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
-                                    </div>
-                                    <?php endif; ?>
-                                </section>
-                            <?php  }  ?>
-                            <?php if($content == 'Subjects'){ ?>
-                                <section class="row-fluid marginbottom25 widget_categories">
-                                    <header class="row-fluid border-bottom marginbottom15">
-                                        <h1 class="h1-header"><?php _e('Subjects','multimedia'); ?></h1>
-                                    </header>
-                                    <ul class="filter-list">
-                                    <?php foreach ( $descriptor_list as $descriptor) { ?>
-                                        <?php
-                                            $filter_link = '?';
-                                            if ($query != ''){
-                                                $filter_link .= 'q=' . $query . '&';
-                                            }
-                                            $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
-                                            if ($user_filter != ''){
-                                                $filter_link .= ' AND ' . $user_filter ;
-                                            }
-                                        ?>
-                                        <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
-                                            <li class="cat-item">
-                                                <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
-                                                <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-                                            </li>
-                                        <?php endif; ?>
-                                    <?php } ?>
-                                    </ul>
-                                    <?php if ( count($descriptor_list) == 20 ) : ?>
-                                    <div class="show-more text-center">
-                                        <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="descriptor_filter"><?php _e('show more','multimedia'); ?></a>
-                                        <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
-                                    </div>
-                                    <?php endif; ?>
-                              </section>
-                            <?php } ?>
-                            <?php if($content == 'Media type'){ ?>
-                                <section class="row-fluid marginbottom25 widget_categories">
-                                    <header class="row-fluid border-bottom marginbottom15">
-                                        <h1 class="h1-header"><?php _e('Media type','multimedia'); ?></h1>
-                                    </header>
-                                    <ul class="filter-list">
-                                    <?php foreach ( $media_type_filter as $type) { ?>
-                                        <?php
-                                            $filter_link = '?';
-                                            if ($query != ''){
-                                                $filter_link .= 'q=' . $query . '&';
-                                            }
-                                            $filter_link .= 'filter=media_type_filter:"' . $type[0] . '"';
-                                            if ($user_filter != ''){
-                                                $filter_link .= ' AND ' . $user_filter ;
-                                            }
-                                        ?>
-                                        <li class="cat-item">
-                                            <a href='<?php echo $filter_link; ?>'><?php multimedia_print_lang_value($type[0], $site_language); ?></a>
-                                            <span class="cat-item-count"><?php echo $type[1] ?></span>
-                                        </li>
-                                    <?php } ?>
-                                    </ul>
-                                    <?php if ( count($media_type_filter) == 20 ) : ?>
-                                    <div class="show-more text-center">
-                                        <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="media_type_filter"><?php _e('show more','multimedia'); ?></a>
-                                        <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
-                                    </div>
-                                    <?php endif; ?>
-                                 </section>
-                            <?php } ?>
-                        <?php   } ?>
+                <section class="header-search">
+                    <?php if ($mm_config['show_form']) : ?>
+                        <form role="search" method="get" name="searchForm" id="searchForm" action="<?php echo real_site_url($mm_plugin_slug); ?>">
+                            <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'multimedia'); ?>...">
+                            <input type="hidden" name="sort" id="sort" value="<?php echo $sort; ?>">
+                            <input id="searchsubmit" value="<?php _e('Search', 'multimedia'); ?>" type="submit">
+                        </form>
                     <?php endif; ?>
+                </section>
+
+                <?php dynamic_sidebar('multimedia-home');?>
+
+                <?php if (strval($total) > 0) :?>
+
+                    <?php
+                        $order = explode(';', $mm_config['available_filter']);
+                        foreach ( $order as $key => $value) {
+                    ?>
+
+                        <?php if($value == 'Collection'){ ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Collection','multimedia'); ?></h1>
+                                </header>
+                                <ul class="filter-list">
+                                <?php foreach ( $collection_filter as $collection) { ?>
+                                    <?php
+                                        $filter_link = '?';
+                                        if ($query != ''){
+                                            $filter_link .= 'q=' . $query . '&';
+                                        }
+                                        $filter_link .= 'filter=media_collection_filter:"' . $collection[0] . '"';
+                                        if ($user_filter != ''){
+                                            $filter_link .= ' AND ' . $user_filter ;
+                                        }
+                                    ?>
+                                    <li class="cat-item">
+                                        <a href='<?php echo $filter_link; ?>'><?php echo $collection[0]; ?></a>
+                                        <span class="cat-item-count"><?php echo $collection[1] ?></span>
+                                    </li>
+                                <?php } ?>
+                                </ul>
+                                <?php if ( count($collection_filter) == 20 ) : ?>
+                                <div class="show-more text-center">
+                                    <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="media_collection_filter"><?php _e('show more','multimedia'); ?></a>
+                                    <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
+                                </div>
+                                <?php endif; ?>
+                            </section>
+                        <?php  }  ?>
+                        <?php if($value == 'Subjects'){ ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Subjects','multimedia'); ?></h1>
+                                </header>
+                                <ul class="filter-list">
+                                <?php foreach ( $descriptor_list as $descriptor) { ?>
+                                    <?php
+                                        $filter_link = '?';
+                                        if ($query != ''){
+                                            $filter_link .= 'q=' . $query . '&';
+                                        }
+                                        $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                                        if ($user_filter != ''){
+                                            $filter_link .= ' AND ' . $user_filter ;
+                                        }
+                                    ?>
+                                    <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
+                                        <li class="cat-item">
+                                            <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
+                                            <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php } ?>
+                                </ul>
+                                <?php if ( count($descriptor_list) == 20 ) : ?>
+                                <div class="show-more text-center">
+                                    <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="descriptor_filter"><?php _e('show more','multimedia'); ?></a>
+                                    <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
+                                </div>
+                                <?php endif; ?>
+                          </section>
+                        <?php } ?>
+                        <?php if($value == 'Media type'){ ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Media type','multimedia'); ?></h1>
+                                </header>
+                                <ul class="filter-list">
+                                <?php foreach ( $media_type_filter as $type) { ?>
+                                    <?php
+                                        $filter_link = '?';
+                                        if ($query != ''){
+                                            $filter_link .= 'q=' . $query . '&';
+                                        }
+                                        $filter_link .= 'filter=media_type_filter:"' . $type[0] . '"';
+                                        if ($user_filter != ''){
+                                            $filter_link .= ' AND ' . $user_filter ;
+                                        }
+                                    ?>
+                                    <li class="cat-item">
+                                        <a href='<?php echo $filter_link; ?>'><?php multimedia_print_lang_value($type[0], $site_language); ?></a>
+                                        <span class="cat-item-count"><?php echo $type[1] ?></span>
+                                    </li>
+                                <?php } ?>
+                                </ul>
+                                <?php if ( count($media_type_filter) == 20 ) : ?>
+                                <div class="show-more text-center">
+                                    <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="media_type_filter"><?php _e('show more','multimedia'); ?></a>
+                                    <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
+                                </div>
+                                <?php endif; ?>
+                             </section>
+                        <?php } ?>
+                        <?php if($value == 'Thematic area'){ ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Thematic area','multimedia'); ?></h1>
+                                </header>
+                                <ul class="filter-list">
+                                <?php foreach ( $thematic_area_list as $ta) { ?>
+                                    <?php
+                                        $filter_link = '?';
+                                        if ($query != ''){
+                                            $filter_link .= 'q=' . $query . '&';
+                                        }
+                                        $filter_link .= 'filter=thematic_area_display:"' . $ta[0] . '"';
+                                        if ($user_filter != ''){
+                                            $filter_link .= ' AND ' . $user_filter ;
+                                        }
+                                    ?>
+                                    <li class="cat-item">
+                                        <a href='<?php echo $filter_link; ?>'><?php multimedia_print_lang_value($ta[0], $site_language); ?></a>
+                                        <span class="cat-item-count"><?php echo $ta[1] ?></span>
+                                    </li>
+                                <?php } ?>
+                                </ul>
+                                <?php if ( count($thematic_area_list) == 20 ) : ?>
+                                <div class="show-more text-center">
+                                    <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="thematic_area_display"><?php _e('show more','multimedia'); ?></a>
+                                    <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
+                                </div>
+                                <?php endif; ?>
+                             </section>
+                        <?php } ?>
+                    <?php } ?>
+                <?php endif; ?>
             </aside>
             <div class="spacer"></div>
         </div>

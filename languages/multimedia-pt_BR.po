@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FI-Multimedia 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/fi-multimedia\n"
-"POT-Creation-Date: 2023-09-04 20:51-0300\n"
-"PO-Revision-Date: 2023-09-04 20:52-0300\n"
+"POT-Creation-Date: 2023-09-12 00:22-0300\n"
+"PO-Revision-Date: 2023-09-12 00:22-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -29,12 +29,12 @@ msgstr "FI-Multimídia"
 msgid "Multimedia sidebar"
 msgstr "Multimídia área de destaques"
 
-#: fi-multimedia.php:165 fi-multimedia.php:182 template/home.php:70
-#: template/home.php:72 template/resource.php:50 template/rss.php:53
+#: fi-multimedia.php:165 fi-multimedia.php:182 template/home.php:71
+#: template/home.php:73 template/resource.php:50 template/rss.php:53
 msgid "Multimedia"
 msgstr "Multimídia"
 
-#: fi-multimedia.php:229
+#: fi-multimedia.php:228
 msgid "Settings"
 msgstr "Configurações"
 
@@ -200,86 +200,92 @@ msgstr "Filtro de Mais Documentos Relacionados"
 msgid "Sidebar order"
 msgstr "Ordem da lateral"
 
-#: settings.php:101
+#: settings.php:102
 msgid "Available"
 msgstr "Disponíveis"
 
-#: settings.php:118
+#: settings.php:113
 msgid "Selected"
 msgstr "Selecionados"
 
-#: settings.php:137
+#: settings.php:132
 msgid "Save Changes"
 msgstr "Salvar alterações"
 
-#: template/home.php:68 template/resource.php:49
+#: template/home.php:69 template/resource.php:49
 msgid "Home"
 msgstr "Ínicio"
 
-#: template/home.php:73
+#: template/home.php:74
 msgid "Search result"
 msgstr "Resultado"
 
-#: template/home.php:79
+#: template/home.php:80
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-#: template/home.php:83
+#: template/home.php:84
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/home.php:85
+#: template/home.php:86
 msgid "Total of resources"
 msgstr "Total de recursos"
 
-#: template/home.php:92
+#: template/home.php:93
 msgid "Sort by"
 msgstr "Ordenar por"
 
-#: template/home.php:95
+#: template/home.php:96
 msgid "Entry date"
 msgstr "Data de registro"
 
-#: template/home.php:96
+#: template/home.php:97
 msgid "Publication date"
 msgstr "Data de publicação"
 
-#: template/home.php:115 template/resource.php:67
+#: template/home.php:116 template/resource.php:67
 msgid "Date"
 msgstr "Data"
 
-#: template/home.php:121
+#: template/home.php:122
 msgid "See more details"
 msgstr "Ver detalhes"
 
-#: template/home.php:126
+#: template/home.php:127
 msgid "Available languages"
 msgstr "Idiomas disponíveis"
 
-#: template/home.php:161 template/home.php:163 template/resource.php:275
+#: template/home.php:162 template/home.php:164 template/resource.php:275
 #: template/resource.php:276
 msgid "Search"
 msgstr "Pesquisa"
 
-#: template/home.php:179 template/resource.php:77
+#: template/home.php:181 template/resource.php:77
 msgid "Collection"
 msgstr "Coleção"
 
-#: template/home.php:201 template/home.php:234 template/home.php:265
+#: template/home.php:203 template/home.php:236 template/home.php:267
+#: template/home.php:298
 msgid "show more"
 msgstr "mostrar mais"
 
-#: template/home.php:202 template/home.php:235 template/home.php:266
+#: template/home.php:204 template/home.php:237 template/home.php:268
+#: template/home.php:299
 msgid "loading"
 msgstr "carregando"
 
-#: template/home.php:210
+#: template/home.php:212
 msgid "Subjects"
 msgstr "Assuntos"
 
-#: template/home.php:243
+#: template/home.php:245
 msgid "Media type"
 msgstr "Tipo de mídia"
+
+#: template/home.php:276
+msgid "Thematic area"
+msgstr "Área Temática"
 
 #: template/related.php:56 template/similar.php:41
 msgid "No related documents"
