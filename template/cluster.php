@@ -67,12 +67,11 @@ if ($response){
                         $filter_link .= ' AND ' . $user_filter ;
                     }
                 ?>
-                <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
-                    <li class="cat-item">
-                        <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
-                        <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-                    </li>
-                <?php endif; ?>
+                <?php $class = ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) ? 'cat-item' : 'cat-item hide'; ?>
+                <li class="<?php echo $class; ?>">
+                    <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
+                    <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                </li>
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
