@@ -27,6 +27,10 @@
                 <ul>
                 <?php
                     if ( array_key_exists('document', $docs) ) {
+                        if ( array_key_exists('id', $docs['document']) ) {
+                            $docs['document'] = array($docs['document']);
+                        }
+
                         foreach ( $docs['document'] as $similar ) {
                             ?>
                             <li class="cat-item">
