@@ -160,7 +160,7 @@ $pages->paginate($page_url_params);
                     <?php if ($mm_config['show_form']) : ?>
                         <form role="search" method="get" name="searchForm" id="searchForm" action="<?php echo real_site_url($mm_plugin_slug); ?>">
                             <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'multimedia'); ?>...">
-                            <input type="hidden" name="sort" id="sort" value="<?php echo $sort; ?>">
+                            <input type="hidden" name="sort" id="sort" value="<?php echo ( isset($_GET['sort']) && in_array($_GET['sort'], $sort_options) ) ? $_GET['sort'] : ''; ?>">
                             <input id="searchsubmit" value="<?php _e('Search', 'multimedia'); ?>" type="submit">
                         </form>
                     <?php endif; ?>
