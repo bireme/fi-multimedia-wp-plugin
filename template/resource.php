@@ -87,10 +87,10 @@ if ($response){
                         </p>
                     </span>
 
-                    <?php if ($resource->authors): ?>
+                    <?php if ($resource->author): ?>
                         <span class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Author(s)','multimedia'); ?>:</span>
-                            <?php echo implode("; ", $resource->authors); ?>
+                            <?php echo implode("; ", $resource->author); ?>
                         </span>
                     <?php endif; ?>
 
