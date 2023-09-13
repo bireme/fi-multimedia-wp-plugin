@@ -52,6 +52,10 @@ if ($response){
     $collection_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_collection_filter;
     $media_type_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_type_filter;
     $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
+    $publication_year_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->publication_year;
+    usort($publication_year_list, function($a, $b) {
+        return $b[0] <=> $a[0];
+    });
 }
 
 $page_url_params = real_site_url($mm_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
@@ -299,6 +303,37 @@ $pages->paginate($page_url_params);
                                 </div>
                                 <?php endif; ?>
                              </section>
+                        <?php } ?>
+                        <?php if ( $value == 'Publication year' ) {  ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Publication year','multimedia'); ?></h1>
+                                </header>
+                                <ul class="filter-list">
+                                    <?php foreach ( $publication_year_list as $year ) { ?>
+                                        <?php
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=publication_year:"' . $year[0] . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
+                                        <li class="cat-item">
+                                            <a href='<?php echo $filter_link; ?>'><?php echo $year[0]; ?></a>
+                                            <span class="cat-item-count"><?php echo $year[1] ?></span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                                <?php if ( count($publication_year_list) == 20 ) : ?>
+                                <div class="show-more text-center">
+                                    <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="publication_year"><?php _e('show more','multimedia'); ?></a>
+                                    <a href="javascript:void(0)" class="loading"><?php _e('loading','multimedia'); ?>...</a>
+                                </div>
+                                <?php endif; ?>
+                            </section>
                         <?php } ?>
                     <?php } ?>
                 <?php endif; ?>

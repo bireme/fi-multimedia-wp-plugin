@@ -87,7 +87,7 @@ function multimedia_page_admin() {
                     <tr valign="top">
                         <th scope="row"><?php _e('Sidebar order', 'multimedia');?>:</th>
                         <?php
-                            $available_filters = 'Collection;Subjects;Media type;Thematic area';
+                            $available_filters = 'Collection;Subjects;Media type;Thematic area;Publication year';
                             $available_filter_list = explode(';', $available_filters);
                             if(!isset($config['available_filter'])){
                                 $order = $available_filter_list;

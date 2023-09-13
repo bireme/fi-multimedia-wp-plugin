@@ -26,6 +26,10 @@ if ($response){
     $collection_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_collection_filter;
     $media_type_filter = $response_json->diaServerResponse[0]->facet_counts->facet_fields->media_type_filter;
     $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
+    $publication_year_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->publication_year;
+    usort($publication_year_list, function($a, $b) {
+        return $b[0] <=> $a[0];
+    });
 }
 
 ?>
@@ -119,6 +123,29 @@ if ($response){
                     <span class="cat-item-count"><?php echo $ta[1] ?></span>
                 </li>
             <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if($cluster == 'publication_year'): ?>
+    <?php if($publication_year_list): ?>
+        <ul class="filter-list">
+            <?php foreach ( $publication_year_list as $year ) { ?>
+                <?php
+                    $filter_link = '?';
+                    if ($query != ''){
+                        $filter_link .= 'q=' . $query . '&';
+                    }
+                    $filter_link .= 'filter=publication_year:"' . $year[0] . '"';
+                    if ($user_filter != ''){
+                        $filter_link .= ' AND ' . $user_filter ;
+                    }
+                ?>
+                <li class="cat-item">
+                    <a href='<?php echo $filter_link; ?>'><?php echo $year[0]; ?></a>
+                    <span class="cat-item-count"><?php echo $year[1] ?></span>
+                </li>
+            <?php } ?>
         </ul>
     <?php endif; ?>
 <?php endif; ?>

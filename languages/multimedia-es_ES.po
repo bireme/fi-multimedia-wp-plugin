@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FI-Multimedia 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/fi-multimedia\n"
-"POT-Creation-Date: 2023-09-12 00:22-0300\n"
-"PO-Revision-Date: 2023-09-12 00:23-0300\n"
+"POT-Creation-Date: 2023-09-13 16:47-0300\n"
+"PO-Revision-Date: 2023-09-13 16:48-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -29,8 +29,8 @@ msgstr "FI-Multimedia"
 msgid "Multimedia sidebar"
 msgstr "Multimedia area de destacados"
 
-#: fi-multimedia.php:165 fi-multimedia.php:182 template/home.php:71
-#: template/home.php:73 template/resource.php:50 template/rss.php:53
+#: fi-multimedia.php:165 fi-multimedia.php:182 template/home.php:75
+#: template/home.php:77 template/resource.php:50 template/rss.php:53
 msgid "Multimedia"
 msgstr "Multimedia"
 
@@ -212,82 +212,86 @@ msgstr "Seleccionado"
 msgid "Save Changes"
 msgstr "Guardar Cambios"
 
-#: template/home.php:69 template/resource.php:49
+#: template/home.php:73 template/resource.php:49
 msgid "Home"
 msgstr "Inicio"
 
-#: template/home.php:74
+#: template/home.php:78
 msgid "Search result"
 msgstr "Resultado de la búsqueda"
 
-#: template/home.php:80
+#: template/home.php:84
 msgid "No results found"
 msgstr "No se encontraron resultados"
 
-#: template/home.php:84
+#: template/home.php:88
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/home.php:86
+#: template/home.php:90
 msgid "Total of resources"
 msgstr "Total de recursos"
 
-#: template/home.php:93
+#: template/home.php:97
 msgid "Sort by"
 msgstr "Ordenar por"
 
-#: template/home.php:96
+#: template/home.php:100
 msgid "Entry date"
 msgstr "Fecha de entrada"
 
-#: template/home.php:97
+#: template/home.php:101
 msgid "Publication date"
 msgstr "Fecha de publicación"
 
-#: template/home.php:116 template/resource.php:67
+#: template/home.php:120 template/resource.php:67
 msgid "Date"
 msgstr "Fecha"
 
-#: template/home.php:122
+#: template/home.php:126
 msgid "See more details"
 msgstr "Ver más detalles"
 
-#: template/home.php:127
+#: template/home.php:131
 msgid "Available languages"
 msgstr "Idiomas disponibles"
 
-#: template/home.php:162 template/home.php:164 template/resource.php:275
+#: template/home.php:166 template/home.php:168 template/resource.php:275
 #: template/resource.php:276
 msgid "Search"
 msgstr "Buscar"
 
-#: template/home.php:181 template/resource.php:77
+#: template/home.php:185 template/resource.php:77
 msgid "Collection"
 msgstr "Colección"
 
-#: template/home.php:203 template/home.php:236 template/home.php:267
-#: template/home.php:298
+#: template/home.php:207 template/home.php:239 template/home.php:270
+#: template/home.php:301 template/home.php:332
 msgid "show more"
 msgstr "mostrar más"
 
-#: template/home.php:204 template/home.php:237 template/home.php:268
-#: template/home.php:299
+#: template/home.php:208 template/home.php:240 template/home.php:271
+#: template/home.php:302 template/home.php:333
 msgid "loading"
 msgstr "cargando"
 
-#: template/home.php:212
+#: template/home.php:216
 msgid "Subjects"
 msgstr "Asuntos"
 
-#: template/home.php:245
+#: template/home.php:248
 msgid "Media type"
 msgstr "Tipo de medio"
 
-#: template/home.php:276
+#: template/home.php:279
 msgid "Thematic area"
 msgstr "Área Temática"
 
-#: template/related.php:56 template/similar.php:41
+#: template/home.php:310
+msgid "Publication year"
+msgstr "Año de publicación"
+
+#: template/related.php:56 template/related.php:67 template/similar.php:45
 msgid "No related documents"
 msgstr "No se encontraron documentos relacionados"
 
