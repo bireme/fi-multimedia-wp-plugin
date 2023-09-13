@@ -12,6 +12,10 @@
     $similar_docs = json_decode($json, TRUE);
 
     if ( $similar_docs && array_key_exists('document', $similar_docs) ) {
+        if ( array_key_exists('id', $similar_docs['document']) ) {
+            $similar_docs['document'] = array($similar_docs['document']);
+        }
+
         foreach ( $similar_docs['document'] as $similar) {
             ?>
             <li class="cat-item">
