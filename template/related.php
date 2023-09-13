@@ -57,7 +57,7 @@
                             <?php
                         }
                     } else {
-                        echo '<li>' . __('No related documents', 'direve') . '</li>';
+                        echo '<li>' . __('No related documents', 'multimedia') . '</li>';
                     }
                 ?>
                 </ul>
@@ -68,7 +68,7 @@
         ?>
         <div class="">
             <ul>
-                <?php echo '<li>' . __('No related documents', 'direve') . '</li>'; ?>
+                <?php echo '<li>' . __('No related documents', 'multimedia') . '</li>'; ?>
             </ul>
         </div>
         <?php
