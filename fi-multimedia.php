@@ -210,11 +210,10 @@ if(!class_exists('FI_Multimedia_Plugin')) {
             wp_enqueue_style('multimedia', PLUGIN_URL . 'template/css/style.css');
 
             wp_enqueue_script('jquery');
-            wp_localize_script('jquery', 'mm_script_vars', array(
-                    'ajaxurl' => admin_url( 'admin-ajax.php' ),
-                    'ajaxnonce' => wp_create_nonce( 'ajax_post_validation' )
-                )
-            );
+            wp_add_inline_script('jquery', 'const mm_script_vars = ' . json_encode( array(
+                'ajaxurl' => admin_url( 'admin-ajax.php' ),
+                'ajaxnonce' => wp_create_nonce( 'ajax_post_validation' )
+            )), 'before');
         }
 
         function register_settings(){
