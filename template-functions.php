@@ -41,9 +41,16 @@ if ( !function_exists('multimedia_get_lang_value') ) {
     }
 }
 
-if ( !function_exists('print_formated_date') ) {
-    function print_formated_date($string){
-        echo substr($string,6,2)  . '/' . substr($string,4,2) . '/' . substr($string,0,4);
+if ( !function_exists('format_date') ) {
+    function format_date($string){
+        $date_formated = '';
+        if (strpos($string,'-') !== false) {
+            $date_formated = substr($string,8,2)  . '/' . substr($string,5,2) . '/' . substr($string,0,4);
+        }else{
+            $date_formated =  substr($string,6,2)  . '/' . substr($string,4,2) . '/' . substr($string,0,4);
+        }
+
+        return $date_formated;
     }
 }
 
