@@ -232,7 +232,7 @@ if(!class_exists('FI_Multimedia_Plugin')) {
         function google_analytics_code(){
             global $wp;
 
-            $pagename = $wp->query_vars["pagename"];
+            $pagename = isset($wp->query_vars['pagename']) ? $wp->query_vars['pagename'] : '';
             $multimedia_config = get_option('multimedia_config');
 
             // check if is defined GA code and pagename starts with plugin slug

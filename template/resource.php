@@ -94,11 +94,13 @@ if ($response){
                         </span>
                     <?php endif; ?>
 
+                    <?php if (isset($resource->contributors)): ?>
                     <?php if ($resource->contributors): ?>
                         <span class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Contributor(s)','multimedia'); ?>:</span>
                             <?php echo implode("; ", $resource->contributors); ?>
                         </span>
+                    <?php endif; ?>
                     <?php endif; ?>
 
                     <?php if ($resource->objective): ?>
@@ -136,7 +138,7 @@ if ($response){
                             <i class="ico-tags"> </i>
                                 <?php
                                     $descriptors = (array)$resource->descriptor;
-                                    $keywords = (array)$resource->keyword;
+                                    $keywords = isset($resource->keyword) ? (array) $resource->keyword : [];
                                 ?>
                                 <strong><?php echo implode("; ", array_merge( $descriptors, $keywords) ); ?></strong>
                           </div>
@@ -148,6 +150,8 @@ if ($response){
                         </div>
                     <?php endif; ?>
 
+
+                    <?php if (isset($resource->related_links)) : ?>
                     <?php if ($resource->related_links) : ?>
                         <span class="row-fluid margintop05 related-links">
                             <span class="conteudo-loop-data-tit"><?php _e('Related Links','multimedia'); ?>:</span>
@@ -160,6 +164,8 @@ if ($response){
                             <?php endforeach; ?>
                         </span>
                     <?php endif; ?>
+                    <?php endif; ?>
+
 
                     <footer class="row-fluid margintop05">
                         <ul class="conteudo-loop-icons">

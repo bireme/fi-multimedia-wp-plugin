@@ -13,10 +13,13 @@ $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
 // set query using default param q (query) or s (wordpress search) or newexpr (metaiah)
-$query = sanitize_text_field($_GET['s']) . sanitize_text_field($_GET['q']);
+$s = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : '';
+$q = isset($_GET['q']) ? sanitize_text_field($_GET['q']) : '';
+
+$query = $s . $q;
 $query = stripslashes( trim($query) );
 
-$sanitize_user_filter = sanitize_text_field($_GET['filter']);
+$sanitize_user_filter = isset($_GET['filter']) ? sanitize_text_field($_GET['filter']) : '';
 $user_filter = stripslashes($sanitize_user_filter);
 $page = ( isset($_GET['page']) ? sanitize_text_field($_GET['page']) : 1 );
 $total = 0;
@@ -126,11 +129,13 @@ $pages->paginate($page_url_params);
                                     <span class="more"><a href="<?php echo real_site_url($mm_plugin_slug); ?>resource/?id=<?php echo $resource->id; ?>"><?php _e('See more details','multimedia'); ?></a></span>
                                 </p>
 
+                                <?php if (isset($resource->source_language_display)): ?>
                                 <?php if ($resource->source_language_display): ?>
                                     <div id="conteudo-loop-idiomas" class="row-fluid">
                                         <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','multimedia'); ?>:</span>
                                         <?php multimedia_print_lang_value($resource->source_language_display, $site_language); ?>
                                     </div>
+                                <?php endif; ?>
                                 <?php endif; ?>
 
                                 <?php if ($resource->descriptor || $resource->keyword ) : ?>
@@ -138,7 +143,7 @@ $pages->paginate($page_url_params);
                                         <i class="ico-tags"> </i>
                                             <?php
                                                 $descriptors = (array)$resource->descriptor;
-                                                $keywords = (array)$resource->keyword;
+                                                $keywords = isset($resource->keyword) ? (array) $resource->keyword : [];
                                             ?>
                                             <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                                       </div>
@@ -359,11 +364,11 @@ $pages->paginate($page_url_params);
                     url: mm_script_vars.ajaxurl,
                     data: {
                         action: 'mm_show_more_clusters',
-                        lang: '<?php echo $lang_dir; ?>',
-                        site_lang: '<?php echo $site_language; ?>',
-                        query: '<?php echo $query; ?>',
-                        filter: '<?php echo $filter; ?>',
-                        uf: '<?php echo $user_filter; ?>',
+                        lang: '<?php echo esc_url_raw($lang_dir); ?>',
+                        site_lang: '<?php echo esc_url_raw($site_language); ?>',
+                        query: '<?php echo esc_url_raw($query); ?>',
+                        filter: '<?php echo esc_url_raw($filter); ?>',
+                        uf: '<?php echo esc_url_raw($user_filter); ?>',
                         cluster: cluster,
                         fb: fb
                     },
