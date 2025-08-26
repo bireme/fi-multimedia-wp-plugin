@@ -201,10 +201,10 @@ if(!class_exists('FI_Multimedia_Plugin')) {
 		}
 
         function page_template_styles_scripts(){
-            wp_enqueue_script('fontawesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js');
+            wp_enqueue_script('fontawesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js');
             wp_enqueue_script('slick-js', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js');
             wp_enqueue_script('multimedia', PLUGIN_URL . 'template/js/functions.js');
-            wp_enqueue_style('fontawesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+            wp_enqueue_style('fontawesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
             wp_enqueue_style('slick-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css');
             wp_enqueue_style('slick-theme-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css');
             wp_enqueue_style('multimedia', PLUGIN_URL . 'template/css/style.css');

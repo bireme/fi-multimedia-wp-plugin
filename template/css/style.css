@@ -408,3 +408,24 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
     .tablet{display:block;}
     .menu-mapa-do-site-pt-container {width:auto;}
 }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;              /* tamanho do círculo */
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  margin-left: 0.3rem;  margin-right: 0.3rem;
+
+  font-size: 14px;          /* tamanho do ícone */
+  background: #777;
+  cursor: pointer;
+}
+
+.badge.facebook:hover  { background: #1877F2; }
+.badge.instagram:hover { background: #E1306C; }
+.badge.x:hover         { background: #000; }
+.badge.linkedin:hover  { background:#0A66C2; }
+.badge.whatsapp:hover  { background:#25D366; }

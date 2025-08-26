@@ -42,6 +42,8 @@ if ($response){
 ?>
 
 <?php get_header('multimedia'); ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
 <div id="content" class="row-fluid">
     <div class="ajusta2">
@@ -170,13 +172,18 @@ if ($response){
                     <footer class="row-fluid margintop05">
                         <ul class="conteudo-loop-icons">
                             <li class="conteudo-loop-icons-li">
+                                <?php _e('Share','multimedia'); ?>: 
+                                <span class="badge facebook" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-facebook-f"></i></span>
+                                <span class="badge instagram" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-instagram"></i></span>
+                                <span class="badge x" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-x-twitter"></i></span>
+                                <span class="badge linkedin" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-linkedin-in" aria-hidden="true" ></i></span>
+                                <span class="badge whatsapp" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
+
+                                <!--
                                 <i class="ico-compartilhar"></i>
-                                <!-- AddThis Button BEGIN -->
                                 <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $mm_addthis_id; ?>"><?php _e('Share','multimedia'); ?></a>
                                 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
                                 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $mm_addthis_id; ?>"></script>
-                                <!-- AddThis Button END -->
-                                <!--
                                 <a href="#">
                                     <?php _e('Share','multimedia'); ?>
                                 </a>
