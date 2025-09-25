@@ -168,17 +168,37 @@ if ($response){
                     <?php endif; ?>
                     <?php endif; ?>
 
-
+<?php
+$urlcompartilhamento = real_site_url($direve_plugin_slug) . 'resource/?id=' . $resource->django_id;
+//$urlcompartilhamento = rawurlencode($urlcompartilhamento);
+?>
                     <footer class="row-fluid margintop05">
                         <ul class="conteudo-loop-icons">
                             <li class="conteudo-loop-icons-li">
                                 <?php _e('Share','multimedia'); ?>: 
-                                <span class="badge facebook" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-facebook-f"></i></span>
-                                <span class="badge instagram" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-instagram"></i></span>
-                                <span class="badge x" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-x-twitter"></i></span>
-                                <span class="badge linkedin" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-linkedin-in" aria-hidden="true" ></i></span>
-                                <span class="badge whatsapp" title="<?php _e('Share','multimedia'); ?>"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
 
+                                        <!-- Facebook -->
+<a class="badge facebook" title="<?php _e('Share','multimedia');?>" 
+   href="https://www.facebook.com/sharer/sharer.php?u=<?=urlencode($urlcompartilhamento)?>&quote=<?=urlencode('Confira isso!')?>"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-facebook-f"></i>
+</a>
+<a class="badge x" title="<?php _e('Share','multimedia');?>" 
+   href="https://twitter.com/intent/tweet?url=<?=urlencode($urlcompartilhamento)?>&text=<?=urlencode('Confira isso!')?>"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-x-twitter"></i>
+</a>
+<a class="badge whatsapp" title="<?php _e('Share','multimedia');?>" 
+   href="https://wa.me/?text=<?=urlencode('Confira isso: '.$urlcompartilhamento)?>"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<a class="badge copy" title="<?php _e('Share','multimedia');?>" 
+   href="javascript:void(0);"
+   onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link da página copiado!'))">
+  <i class="fa-regular fa-copy" title="<?php _e('Share','multimedia');?>"></i>
+</a>
                                 <!--
                                 <i class="ico-compartilhar"></i>
                                 <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $mm_addthis_id; ?>"><?php _e('Share','multimedia'); ?></a>

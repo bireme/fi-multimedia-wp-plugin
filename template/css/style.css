@@ -416,16 +416,19 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
   width: 20px;              /* tamanho do círculo */
   height: 20px;
   border-radius: 50%;
-  color: #fff;
+  color: #fff !important;
   margin-left: 0.3rem;  margin-right: 0.3rem;
 
   font-size: 14px;          /* tamanho do ícone */
-  background: #777;
+  background: #ddd;
   cursor: pointer;
+  text-decoration: none !important;      /* tamanho do ícone */
 }
 
+.badge.copy:hover { background: #1877F2; }
 .badge.facebook:hover  { background: #1877F2; }
 .badge.instagram:hover { background: #E1306C; }
 .badge.x:hover         { background: #000; }
 .badge.linkedin:hover  { background:#0A66C2; }
 .badge.whatsapp:hover  { background:#25D366; }
+
