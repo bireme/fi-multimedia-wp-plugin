@@ -213,7 +213,7 @@ $urlcompartilhamento = real_site_url($direve_plugin_slug) . 'resource/?id=' . $r
                             <li class="conteudo-loop-icons-li">
                                 <span class="reportar-erro-open">
                                     <i class="ico-reportar"></i>
-                                    <?php _e('Report error','multimedia'); ?>
+                                     <?php _e('Report error','multimedia'); ?>
                                 </span>
 
                                 <div class="reportar-erro">
