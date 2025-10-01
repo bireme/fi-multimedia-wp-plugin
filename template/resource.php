@@ -225,7 +225,9 @@ $urlcompartilhamento = real_site_url($mm_plugin_slug) . 'resource/?id=multimedia
                                     <div class="erro-form">
                                         <form action="https://fi-admin.bvsalud.org/report-error" id="reportErrorForm">
                                             <input type="hidden" name="resource_type" value="media"/>
-                                            <input type="hidden" name="resource_id" value="<?php echo $resource_id; ?>"/>
+                                            <?php $idform = filter_var($resource_id, FILTER_SANITIZE_NUMBER_INT);?>
+
+                                            <input type="hidden" name="resource_id" value="<?php echo $idform; ?>"/>
                                             <div class="reportar-erro-close">[X]</div>
                                             <span class="reportar-erro-tit"><?php _e('Reason','multimedia'); ?></span>
 
