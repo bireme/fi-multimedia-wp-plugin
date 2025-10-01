@@ -169,7 +169,7 @@ if ($response){
                     <?php endif; ?>
 
 <?php
-$urlcompartilhamento = real_site_url($direve_plugin_slug) . 'resource/?id=' . $resource->django_id;
+$urlcompartilhamento = real_site_url($mm_plugin_slug) . 'resource/?id=multimedia.media.' . $resource->django_id;
 //$urlcompartilhamento = rawurlencode($urlcompartilhamento);
 ?>
                     <footer class="row-fluid margintop05">
