@@ -4,11 +4,11 @@ Plugin Name: FI-Multimedia
 Plugin URI: http://reddes.bvsalud.org/projects/fi-admin/
 Description: List multimedia metadata from FI-ADMIN.
 Author: BIREME/OPAS/OMS
-Version: 0.2
+Version: 1.4
 Author URI: http://reddes.bvsalud.org/
 */
 
-define('PLUGIN_VERSION', '0.2' );
+define('PLUGIN_VERSION', '1.4' );
 
 define('PLUGIN_SYMBOLIC_LINK', false );
 define('PLUGIN_DIRNAME', 'fi-multimedia' );
