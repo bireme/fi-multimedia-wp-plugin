@@ -53,7 +53,7 @@ function reportarErro(){
   // Attach a submit handler to the form
   $j( "#reportErrorForm" ).submit(function( event ) {
     // Stop form from submitting normally
-    event.preventDefault();
+    //event.preventDefault();
 
     // Get some values from elements on the page:
     var $form = $j( this ),

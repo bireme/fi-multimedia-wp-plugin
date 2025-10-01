@@ -44,6 +44,7 @@ if ($response){
 <?php get_header('multimedia'); ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <div id="content" class="row-fluid">
     <div class="ajusta2">
@@ -167,6 +168,10 @@ if ($response){
                         </span>
                     <?php endif; ?>
                     <?php endif; ?>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 
 <?php
 $urlcompartilhamento = real_site_url($mm_plugin_slug) . 'resource/?id=multimedia.media.' . $resource->django_id;
