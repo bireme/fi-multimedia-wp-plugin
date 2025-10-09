@@ -24,7 +24,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .ico-rank{width:17px; height:15px; background-position:-108px -92px; margin-top:2px;}
 .ico-tag{width:17px; height:17px; background-position:-82px -91px; margin-top:3px;}
 .ico-tags{width:17px; height:16px; background-position:-159px -93px; margin-top:3px;}
-.ico-reportar{width:19px; height:12px; background-position: -53px -93px; margin-top:4px;}
+.ico-reportar{width:19px; height:12px; background-position: -53px -93px; margin-top:4px; margin-right:4px;}
 .ico-comentar{width:17px; height:16px; background-position:-27px -92px; margin-top:3px;}
 .ico-feeds{width:25px; height:25px; background-position:-187px -88px; margin-top:2px;}
 .ico-fb, .ico-tt, .ico-lk, .ico-at{width:17px; height:16px; margin:5px;}
